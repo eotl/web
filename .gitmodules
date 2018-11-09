@@ -1,0 +1,3 @@
+[submodule "src/md/wiki"]
+	path = src/md/wiki
+	url = git@github.com:eotl/wiki.git
