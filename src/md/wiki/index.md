@@ -1,5 +1,0 @@
-# Stinkbutt
-
-* One
-* Two
-* Three

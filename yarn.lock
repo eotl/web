@@ -11129,6 +11129,10 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
+"wiki@git+https://git@github.com/eotl/wiki.git":
+  version "0.0.0"
+  resolved "git+https://git@github.com/eotl/wiki.git#cadce07c72b0a28d7b30bd8b62328c420d87ad92"
+
 window-size@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.2.0.tgz#b4315bb4214a3d7058ebeee892e13fa24d98b075"
