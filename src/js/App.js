@@ -25,7 +25,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <Link to="/wiki/index">Wiki</Link>
           <Link to="/wiki/bogleg">Bogleg</Link>
