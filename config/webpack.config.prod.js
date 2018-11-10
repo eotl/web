@@ -21,7 +21,8 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-
+const RemarkWikiLinkPlugin = require('remark-wiki-link');
+const WikiConfig = require('./wikiconfig');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -405,9 +406,22 @@ module.exports = {
           },
           {
             test: /\.md$/,
-            loader: [
-              'babel-loader',
-              '@hugmanrique/react-markdown-loader'
+            use: [
+              {
+                loader: 'babel-loader'
+              },
+              {
+                loader: '@hugmanrique/react-markdown-loader',
+                options: {
+                  remarkPlugins: [
+                    [ RemarkWikiLinkPlugin, { 
+                      permalinks: WikiConfig.getPermalinks(),
+                      pageResolver: WikiConfig.resolvePage,
+                      hrefTemplate: WikiConfig.hrefTemplate
+                    } ]
+                  ]
+                }
+              }
             ]
           },
           // "file" loader makes sure assets end up in the `build` folder.

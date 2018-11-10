@@ -5,7 +5,9 @@ import '../scss/wiki.scss';
 class App extends Component {
   render() {
     return (
-      <Wiki className="wiki" />
+      <div className="wiki">
+        <Wiki />
+      </div>
     );
   }
 }

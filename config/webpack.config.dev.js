@@ -17,7 +17,8 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-
+const RemarkWikiLinkPlugin = require('remark-wiki-link');
+const WikiConfig = require('./wikiconfig');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -315,9 +316,22 @@ module.exports = {
           },
           {
             test: /\.md$/,
-            loader: [
-              'babel-loader',
-              '@hugmanrique/react-markdown-loader'
+            use: [
+              {
+                loader: 'babel-loader'
+              },
+              {
+                loader: '@hugmanrique/react-markdown-loader',
+                options: {
+                  remarkPlugins: [
+                    [ RemarkWikiLinkPlugin, { 
+                      permalinks: WikiConfig.getPermalinks(),
+                      pageResolver: WikiConfig.resolvePage,
+                      hrefTemplate: WikiConfig.hrefTemplate
+                    } ]
+                  ]
+                }
+              }
             ]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
