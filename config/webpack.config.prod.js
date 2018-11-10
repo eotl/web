@@ -24,8 +24,6 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const RemarkWikiLinkPlugin = require('remark-wiki-link');
 const WikiConfig = require('./wikiconfig');
-const RemarkReactPlugin = require('remark-react');
-const {Link} = require('react-router-dom');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -414,19 +412,17 @@ module.exports = {
                 loader: 'babel-loader'
               },
               {
-                loader: '@hugmanrique/react-markdown-loader',
+                loader: '@mapbox/jsxtreme-markdown-loader',
                 options: {
                   remarkPlugins: [
                     [ RemarkWikiLinkPlugin, { 
                       permalinks: WikiConfig.getPermalinks(),
                       pageResolver: WikiConfig.resolvePage,
                       hrefTemplate: WikiConfig.hrefTemplate
-                    } ],
-                    [ RemarkReactPlugin, {
-                      remarkReactComponents: {
-                        a: Link
-                      }
                     } ]
+                  ],
+                  prependJs: [
+                    "import { Link } from 'react-router-dom'"
                   ]
                 }
               }

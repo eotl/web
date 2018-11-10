@@ -5,7 +5,6 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.0",
-    "@hugmanrique/react-markdown-loader": "^0.0.2",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -75,12 +74,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@mapbox/jsxtreme-markdown-loader": "^0.8.3",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "gh-pages": "^2.0.1",
-    "rehype-react": "^3.0.3",
+    "rehype": "^6.0.0",
     "remark": "^10.0.0",
-    "remark-react": "^4.0.3",
-    "remark-wiki-link": "^0.0.1"
+    "remark-wiki-link": "bobalu113/remark-wiki-link"
   },
   "jest": {
     "collectCoverageFrom": [
