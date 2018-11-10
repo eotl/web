@@ -17,8 +17,11 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+
 const RemarkWikiLinkPlugin = require('remark-wiki-link');
 const WikiConfig = require('./wikiconfig');
+const RemarkReactPlugin = require('remark-react');
+const {Link} = require('react-router-dom');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -328,6 +331,11 @@ module.exports = {
                       permalinks: WikiConfig.getPermalinks(),
                       pageResolver: WikiConfig.resolvePage,
                       hrefTemplate: WikiConfig.hrefTemplate
+                    } ],
+                    [ RemarkReactPlugin, {
+                      remarkReactComponents: {
+                        a: Link
+                      }
                     } ]
                   ]
                 }

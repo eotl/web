@@ -6,7 +6,6 @@ var pages = walkDir(wikiRoot);
 pages = pages.map((path) => {return path.replace(new RegExp(wikiRoot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), "/wiki")});
 pages = pages.map((path) => {return path.replace(/\.md$/, "")});
 pages = pages.reverse();
-console.log(pages);
 
 function walkDir(dir) {
     var results = [];
@@ -26,11 +25,8 @@ function walkDir(dir) {
 }
 
 function resolvePage(page) {
-  console.log(pages);
-  console.log(page);
   page = page.replace(/ /g, '_').toLowerCase();
   let result =  pages.filter((path) => {return path.match(new RegExp(page.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$")) != null});
-  console.log(result);
   return result;  
 }
 

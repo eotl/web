@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import Wiki from '../md/wiki/index.md';
-import '../scss/wiki.scss';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Wiki from './Wiki';
+
+const WikiPage = ({match}) => {
+  return (<Wiki page={`${match.url}`} />);
+};
 
 class App extends Component {
   render() {
     return (
-      <div className="wiki">
-        <Wiki />
-      </div>
+      <Router>
+        <div>
+          <Link to="/wiki/index">Wiki</Link>
+          <Route path="/wiki/**" component={WikiPage}/>
+        </div>
+      </Router>
     );
   }
 }
