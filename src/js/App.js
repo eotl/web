@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import RouteHook from 'react-route-hook';
-import Wiki from './Wiki';
 import '../scss/wiki.scss';
 
 class App extends Component {
