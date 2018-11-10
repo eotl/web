@@ -8891,7 +8891,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -9116,7 +9116,7 @@ react-dev-utils@^6.1.1:
     strip-ansi "4.0.0"
     text-table "0.2.0"
 
-react-dom@^16.6.1:
+react-dom@^16.2.0, react-dom@^16.6.1:
   version "16.6.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.1.tgz#5476e08694ae504ae385a28b62ecc4fe3a29add9"
   integrity sha512-zm+wBuEMGm009Wt1uE4Zw5KcXOW7qC4E/xW/fpJsCsbOco4U/R84u+DzzO/S4SYSdNBcqcaulcp4w3FXl8pImw==
@@ -9131,7 +9131,18 @@ react-error-overlay@^5.1.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.0.tgz#c516995a5652e7bfbed8b497910d5280df74a7e8"
   integrity sha512-akMy/BQT5m1J3iJIHkSb4qycq2wzllWsmmolaaFVnb+LPV9cIJ/nTud40ZsiiT0H3P+/wXIdbjx2fzF61OaeOQ==
 
-react-router-dom@^4.3.1:
+react-route-hook@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-route-hook/-/react-route-hook-1.2.0.tgz#9bda6a699f646124d82008ada225b42e47c9b76f"
+  integrity sha512-Sg9D/6dG/W7dqBC713Ytv44tC6/h1nN6HHpaX575qL4pmOutZXSvo4G2JXkOLAfhLBEbIDpUUQ9oREz0J9TYwQ==
+  dependencies:
+    prop-types "^15.6.0"
+    react "^16.2.0"
+    react-dom "^16.2.0"
+    react-router "^4.2.0"
+    react-router-dom "^4.2.2"
+
+react-router-dom@^4.2.2, react-router-dom@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
   integrity sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==
@@ -9143,7 +9154,7 @@ react-router-dom@^4.3.1:
     react-router "^4.3.1"
     warning "^4.0.1"
 
-react-router@^4.3.1:
+react-router@^4.2.0, react-router@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
   integrity sha512-yrvL8AogDh2X42Dt9iknk4wF4V8bWREPirFfS9gLU1huk6qK41sg7Z/1S81jjTrGHxa3B8R3J6xIkDAA6CVarg==
@@ -9156,7 +9167,7 @@ react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react@^16.6.1:
+react@^16.2.0, react@^16.6.1:
   version "16.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.6.1.tgz#ee2aef4f0a09e494594882029821049772f915fe"
   integrity sha512-OtawJThYlvRgm9BXK+xTL7BIlDx8vv21j+fbQDjRRUyok6y7NyjlweGorielTahLZHYIdKUoK2Dp9ByVWuMqxw==
