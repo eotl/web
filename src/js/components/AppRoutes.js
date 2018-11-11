@@ -11,7 +11,7 @@ class AppRoutes extends Component {
   }
 
   fetchWiki(props) {
-    import('../md' + props.match.url + '.md').then((page) => { 
+    import('../../md' + props.match.url + '.md').then((page) => { 
       this.setState({ 'wiki': page.default });
     });
   }

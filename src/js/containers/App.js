@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleLeftDrawer } from '../actions/appActions';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import AppBar from '@material-ui/core/AppBar';
 import AppToolbar from '../components/AppToolbar';
 import LeftDrawer from '../components/LeftDrawer';
@@ -22,7 +23,7 @@ class App extends Component {
           <AppBar title={'test'}>
             <AppToolbar toggleLeftDrawer={() => { this.props.dispatch(toggleLeftDrawer()) }}/>
           </AppBar>
-          <LeftDrawer open={this.props.leftDrawerOpen} />
+          <LeftDrawer open={this.props.leftDrawerOpen} top={50}/>
           <AppRoutes /> 
         </div>
       </Router>

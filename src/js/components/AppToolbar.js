@@ -13,7 +13,7 @@ class AppToolbar extends Component {
         <IconButton  onClick={this.props.toggleLeftDrawer} aria-label="Open drawer">
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap>
+        <Typography variant="title" noWrap>
           Material-UI
         </Typography>
         <div />

@@ -7,6 +7,8 @@ const appReducer = (state={
     case "TOGGLE_LEFT_DRAWER":
       state = { ...state, leftDrawerOpen: !state.leftDrawerOpen };
       break;
+    default:
+      break;
   }
   return state;
 }
