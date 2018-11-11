@@ -5,15 +5,24 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
+import styles from '../styles/layout';
 
 class AppToolbar extends Component {
   render() {
+    const { classes, leftDrawerOpen, toggleLeftDrawer } = this.props;
     return (
-      <Toolbar>
-        <IconButton  onClick={this.props.toggleLeftDrawer} aria-label="Open drawer">
+      <Toolbar disableGutters={leftDrawerOpen}>
+        <IconButton 
+          onClick={toggleLeftDrawer} 
+          color="inherit" 
+          aria-label="Open drawer"
+          className={classNames(classes.menuButton, leftDrawerOpen && classes.hide)}
+        >
           <MenuIcon />
         </IconButton>
-        <Typography variant="title" noWrap>
+        <Typography variant="h6" noWrap>
           Material-UI
         </Typography>
         <div />
@@ -28,4 +37,4 @@ class AppToolbar extends Component {
   }
 }
 
-export default AppToolbar;
+export default withStyles(styles, { withTheme: true })(AppToolbar);

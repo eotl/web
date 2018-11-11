@@ -1,37 +1,50 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import RouteHook from 'react-route-hook';
+import PageNotFound from './PageNotFound';
 
 class AppRoutes extends Component {
   constructor(props) {
     super(props);
-    this.state = { 'wiki' : 'div' };
-    this.fetchWiki = this.fetchWiki.bind(this);
-    this.shouldFetchWiki = this.shouldFetchWiki.bind(this);
+    this.state = { 'markdown' : 'div' };
   }
 
-  fetchWiki(props) {
-    import('../../md' + props.match.url + '.md').then((page) => { 
-      this.setState({ 'wiki': page.default });
-    });
+  fetchMarkdown(props) {
+    import('../../md' + props.match.url + 'index.md')
+      .then((page) => { 
+        this.setState({ 'markdown': page.default });
+      })
+      .catch((error) => {
+        import('../../md' + props.match.url + '.md')
+          .then((page) => { 
+            this.setState({ 'markdown': page.default });
+          })
+          .catch((error) => {
+            this.setState({ 'markdown': PageNotFound })
+          });
+      });
   }
 
-  shouldFetchWiki(newProps, oldProps) {
+  shouldFetchMarkdown(newProps, oldProps) {
     if (oldProps.match.url !== newProps.match.url) {
-      this.fetchWiki(newProps)
+      this.fetchMarkdown(newProps)
     }
   }
 
   render() {
     return (
-      <div>
+      <Switch>
         <RouteHook
-           path="/wiki/**"
-           onEnter={this.fetchWiki} 
-           onChange={this.shouldFetchWiki}
-           render={(routerProps) => <div className="wiki"><this.state.wiki /></div>} 
+          path="/wiki/**"
+          onEnter={this.fetchMarkdown.bind(this)} 
+          onChange={this.shouldFetchMarkdown.bind(this)}
+          render={(routerProps) => <this.state.markdown />} 
+        /> 
+        <Route
+          path="*"
+          render={(routerProps) => <PageNotFound />}
         />
-      </div>
+      </Switch>
     );
   }
 }
