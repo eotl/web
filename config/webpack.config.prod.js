@@ -307,6 +307,10 @@ module.exports = {
                     },
                   },
                 ],
+                [
+                  require.resolve('@babel/plugin-proposal-decorators'),
+                  { legacy: true }
+                ]
               ],
               cacheDirectory: true,
               // Save disk space when time isn't as important
