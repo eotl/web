@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import AppToolbar from './AppToolbar';
 import LeftDrawer from './LeftDrawer';
 import AppRoutes from './AppRoutes';
 import classNames from 'classnames';
 import styles from '../styles/layout';
+import { defaultTheme } from '../styles/themes';
 
 class Layout extends Component {
   render() {
@@ -15,33 +16,35 @@ class Layout extends Component {
 
     return (
       <div className={classes.root}>
-        <CssBaseline />
-        <AppBar 
-          position="fixed"
-          title={'test'}
-          className={classNames(classes.appBar, { 
-            [ classes.appBarShift ]: leftDrawerOpen
-          })}
-        >
-          <AppToolbar 
-            leftDrawerOpen={leftDrawerOpen} 
-            toggleLeftDrawer={toggleLeftDrawer} 
+        <MuiThemeProvider theme={defaultTheme}>
+          <CssBaseline />
+          <AppBar 
+            position="fixed"
+            title={'test'}
+            className={classNames(classes.appBar, { 
+              [ classes.appBarShift ]: leftDrawerOpen
+            })}
+          >
+            <AppToolbar 
+              leftDrawerOpen={leftDrawerOpen} 
+              toggleLeftDrawer={toggleLeftDrawer} 
+            />
+          </AppBar>
+          <LeftDrawer 
+            open={leftDrawerOpen} 
+            toggle={toggleLeftDrawer}
           />
-        </AppBar>
-        <LeftDrawer 
-          open={leftDrawerOpen} 
-          toggle={toggleLeftDrawer}
-        />
-        <main
-          className={classNames(classes.content, {
-            [ classes.contentShift ] : leftDrawerOpen
-          })}
-        >
-          <div className={classes.drawerHeader} />
-          <Typography variant="body1" component="div">
-            <AppRoutes />
-          </Typography>
-        </main>
+          <main
+            className={classNames(classes.content, {
+              [ classes.contentShift ] : leftDrawerOpen
+            })}
+          >
+            <div className={classes.drawerHeader} />
+            <Typography variant="body1" component="div">
+              <AppRoutes />
+            </Typography>
+          </main>
+        </MuiThemeProvider>
       </div>
     );
   }

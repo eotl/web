@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import RouteHook from 'react-route-hook';
+import HomePage from './HomePage';
 import PageNotFound from './PageNotFound';
 
 class AppRoutes extends Component {
@@ -40,6 +41,10 @@ class AppRoutes extends Component {
           onChange={this.shouldFetchMarkdown.bind(this)}
           render={(routerProps) => <this.state.markdown />} 
         /> 
+        <Route exact
+          path="/"
+          render={(routerProps) => <HomePage />}
+        />
         <Route
           path="*"
           render={(routerProps) => <PageNotFound />}

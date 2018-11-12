@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { withStyles } from '@material-ui/core/styles';
+import HomeIcon from '@material-ui/icons/Home';
 import ComputerIcon from '@material-ui/icons/Computer';
 import InfoIcon from '@material-ui/icons/Info';
 import HelpIcon from '@material-ui/icons/Help';
@@ -22,6 +23,7 @@ class LeftDrawer extends Component {
     const { theme, classes, open, toggle} = this.props;
 
     const menuItems = [
+      [ '/', "Home", <HomeIcon/> ],
       [ '/connect/', "Connect", <ComputerIcon/> ],
       [ '/news/', "News", <InfoIcon/> ],
       [ '/wiki/', "Wiki", <HelpIcon/> ],

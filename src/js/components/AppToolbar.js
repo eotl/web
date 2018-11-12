@@ -23,7 +23,7 @@ class AppToolbar extends Component {
           <MenuIcon />
         </IconButton>
         <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-          Welcome
+          End of the Line LPMUD
         </Typography>
         <div className={classes.grow} />
         <div className={classes.search}>
