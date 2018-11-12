@@ -16,7 +16,7 @@ class HomePage extends Component {
       <div>
         <MuiThemeProvider theme={terminal}>
           <CssBaseline />
-          <Paper className={classes.bannerWrapper}>
+          <Paper square={true} className={classes.bannerWrapper}>
             <div className={classes.banner}>
               <div className={classes.bannerText}>
                 <pre>
@@ -32,9 +32,9 @@ class HomePage extends Component {
                 </pre>
               </div>
               <div className={classes.bannerCaption}>
-                <h3>
+                <h4>
                   Since 1989 <span style={{color: 'white'}}>|</span> <Link to="/connect/" className={classes.bannerLink}>telnet://eotl.org:2010/</Link>
-                </h3>
+                </h4>
               </div>
             </div>
           </Paper>

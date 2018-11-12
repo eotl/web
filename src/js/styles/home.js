@@ -13,10 +13,10 @@ const styles = theme => ({
   },
   bannerCaption: {
     display: 'block',
-    color: theme.palette.primary.light,
-    fontWeight: 'bold',
+    color: theme.palette.primary.main,
     letterSpacing: '2px',
-    textAlign: 'center'
+    textAlign: 'center',
+    whiteSpace: 'nowrap'
   },
   bannerLink: {
     color: theme.palette.secondary.main,
