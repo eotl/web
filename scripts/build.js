@@ -63,6 +63,8 @@ checkBrowsers(paths.appPath, isInteractive)
     fs.emptyDirSync(paths.appBuild);
     // Merge with the public folder
     copyPublicFolder();
+    // Build markdown index
+    generateMarkdownIndex();
     // Start the webpack build
     return build(previousFileSizes);
   })
@@ -186,4 +188,38 @@ function copyPublicFolder() {
     dereference: true,
     filter: file => file !== paths.appHtml,
   });
+}
+
+function generateMarkdownIndex() {
+  let markdown = walkMarkdown(paths.appMarkdown);
+
+  let flattenDeep = (arr) => {
+    return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+  }
+  markdown = flattenDeep(markdown);
+  markdown = markdown.map((path) => {
+    let escaped = paths.appMarkdown.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    let regex = new RegExp('^' + escaped);
+    return path.replace(regex, '').replace(/\.md$/, '');
+  });
+  
+  let result = { };
+  markdown.map((md) => { result[md] = md });
+  fs.writeFileSync(paths.markdownIndex, JSON.stringify(result));
+}
+
+function walkMarkdown(path, found) {
+  let files = fs.readdirSync(path);
+  files = files.map((file) => {
+    if (file[0] == '.') {
+      return [ ];
+    }
+    file = path + "/" + file;
+    if (fs.lstatSync(file).isDirectory()) {
+      return walkMarkdown(file);
+    } else {
+      return file;
+    }
+  });
+  return files;
 }
