@@ -24,7 +24,7 @@ class LeftDrawer extends Component {
 
     const menuItems = [
       [ '/', "Home", <HomeIcon/> ],
-      [ '/connect/', "Connect", <ComputerIcon/> ],
+      [ '/play/', "Play", <ComputerIcon/> ],
       [ '/news/', "News", <InfoIcon/> ],
       [ '/wiki/', "Wiki", <HelpIcon/> ],
       [ '/community/', "Community", <PeopleIcon/> ],
