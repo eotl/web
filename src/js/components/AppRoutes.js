@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import RouteHook from 'react-route-hook';
 import HomePage from './HomePage';
 import PageNotFound from './PageNotFound';
 import markdownIndex from '../../markdown.json';
+import { wiki } from '../styles/themes';
 
 class AppRoutes extends Component {
   constructor(props) {
@@ -51,7 +53,11 @@ class AppRoutes extends Component {
           path={md}
           onEnter={this.fetchMarkdown} 
           onChange={this.shouldFetchMarkdown}
-          render={(routerProps) => <this.state.markdown />} 
+          render={(routerProps) => (
+            <MuiThemeProvider theme={wiki}>
+              <this.state.markdown />
+            </MuiThemeProvider>
+          )} 
         /> 
       ); 
     });
@@ -63,7 +69,11 @@ class AppRoutes extends Component {
             path={md.slice(0, -6)}
             onEnter={this.fetchMarkdown} 
             onChange={this.shouldFetchMarkdown}
-            render={(routerProps) => <this.state.markdown />} 
+            render={(routerProps) => (
+              <MuiThemeProvider theme={wiki}>
+                <this.state.markdown />
+              </MuiThemeProvider>
+            )} 
           />
         );
       } else {

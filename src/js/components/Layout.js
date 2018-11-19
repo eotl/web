@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import AppToolbar from './AppToolbar';
 import LeftDrawer from './LeftDrawer';
@@ -40,9 +39,9 @@ class Layout extends Component {
             })}
           >
             <div className={classes.drawerHeader} />
-            <Typography variant="body1" component="div">
+            <div>
               <AppRoutes />
-            </Typography>
+            </div>
           </main>
         </MuiThemeProvider>
       </div>

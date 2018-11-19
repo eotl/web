@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
-import classNames from 'classnames';
 import styles from '../styles/home';
 import { defaultTheme, terminal } from '../styles/themes';
 
