@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import AppToolbar from './AppToolbar';
 import LeftDrawer from './LeftDrawer';
-import AppRoutes from './AppRoutes';
+import AppRoutes from '../containers/AppRoutes';
 import classNames from 'classnames';
 import styles from '../styles/layout';
 import { defaultTheme } from '../styles/themes';

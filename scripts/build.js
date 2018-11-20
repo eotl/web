@@ -216,7 +216,7 @@ function walkMarkdown(path, found) {
     }
     file = path + "/" + file;
     if (fs.lstatSync(file).isDirectory()) {
-      return walkMarkdown(file);
+      return [ path + "/", walkMarkdown(file) ];
     } else {
       return file;
     }

@@ -7,15 +7,16 @@ import Layout from '../components/Layout';
 @connect((store) => {
   return {
     leftDrawerOpen: store.app.leftDrawerOpen
-  };
-},
-)
+  }
+}, {
+  toggleLeftDrawer
+})
 class App extends Component {
   render() {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <Layout
-          toggleLeftDrawer={() => { this.props.dispatch(toggleLeftDrawer()) }}
+          toggleLeftDrawer={this.props.toggleLeftDrawer}
           leftDrawerOpen={this.props.leftDrawerOpen}
         />
       </Router>
