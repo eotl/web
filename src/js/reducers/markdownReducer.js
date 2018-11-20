@@ -1,5 +1,4 @@
 import markdownIndex from '../../markdown.json';
-import { storeMarkdown } from '../actions/markdownActions';
 
 const markdownReducer = (state={}, action) => {
   switch (action.type) {
