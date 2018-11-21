@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../../styles/wiki';
 
+@withStyles(styles, { withTheme: true })
 class SubcategoriesSection extends Component {
   render() {
     const { frontMatter } = this.props;
@@ -16,4 +17,4 @@ class SubcategoriesSection extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(SubcategoriesSection);
+export default SubcategoriesSection;

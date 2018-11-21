@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import styles from '../styles/layout';
 
+@withStyles(styles, { withTheme: true })
 class AppToolbar extends Component {
   render() {
     const { classes, leftDrawerOpen, toggleLeftDrawer } = this.props;
@@ -43,4 +44,4 @@ class AppToolbar extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(AppToolbar);
+export default AppToolbar;

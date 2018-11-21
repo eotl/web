@@ -6,6 +6,7 @@ import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import styles from '../styles/home';
 import { defaultTheme, terminal } from '../styles/themes';
 
+@withStyles(styles, { withTheme: true })
 class Home extends Component {
   render() {
     const { classes, } = this.props;
@@ -48,4 +49,4 @@ class Home extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Home);
+export default Home;

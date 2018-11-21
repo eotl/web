@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import Home from '../components/Home';
@@ -8,6 +9,7 @@ import IndexArticle from '../components/wiki/IndexArticle';
 import { loadMarkdown } from '../actions/markdownActions';
 import { wiki } from '../styles/themes';
 
+@withRouter
 @connect((store) => {
   return {
     markdown: store.markdown

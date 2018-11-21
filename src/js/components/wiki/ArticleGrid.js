@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../../styles/wiki';
 
+@withStyles(styles, { withTheme: true })
 class ArticleGrid extends Component {
   render() {
     const { frontMatter } = this.props;
@@ -13,4 +14,4 @@ class ArticleGrid extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(ArticleGrid);
+export default ArticleGrid;

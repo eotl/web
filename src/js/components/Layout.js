@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import styles from '../styles/layout';
 import { defaultTheme } from '../styles/themes';
 
+@withStyles(styles, { withTheme: true })
 class Layout extends Component {
   render() {
     const { classes, toggleLeftDrawer, leftDrawerOpen } = this.props;
@@ -49,4 +50,4 @@ class Layout extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Layout);
+export default Layout;

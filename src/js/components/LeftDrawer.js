@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -18,6 +18,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import styles from '../styles/layout';
 
+@withStyles(styles, { withTheme: true })
 class LeftDrawer extends Component {
   render() {
     const { theme, classes, open, toggle} = this.props;
@@ -64,4 +65,4 @@ class LeftDrawer extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(LeftDrawer);
+export default LeftDrawer;

@@ -8,6 +8,7 @@ import ArticlesSection from './ArticlesSection';
 import SeeAlsoSection from './SeeAlsoSection';
 import styles from '../../styles/wiki';
 
+@withStyles(styles, { withTheme: true })
 class IndexArticle extends Component {
   render() {
     const { frontMatter } = this.props;
@@ -30,4 +31,4 @@ class IndexArticle extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(IndexArticle);
+export default IndexArticle;
