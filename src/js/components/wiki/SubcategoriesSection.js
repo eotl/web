@@ -6,8 +6,24 @@ import styles from '../../styles/wiki';
 
 @withStyles(styles, { withTheme: true })
 class SubcategoriesSection extends Component {
+
+  getSubcategories() {
+    const { category, markdown } = this.props;
+    const regex = new RegExp("^" + category + "[^/]+/$");
+    let subcategories = Object.keys(markdown).filter((path) => {
+      return path.match(regex);
+    });
+    subcategories = subcategories.map((path) => {
+      return {
+        path: path,
+        markdown: markdown[path]
+      }
+    })
+    console.log(markdown['/wiki/index']);
+  }
+
   render() {
-    const { frontMatter } = this.props;
+    const subcategories = this.getSubcategories();
     return [
       <Divider/>,
       <section>

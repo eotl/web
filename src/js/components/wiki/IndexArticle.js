@@ -11,11 +11,26 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class IndexArticle extends Component {
   render() {
-    const { frontMatter } = this.props;
+    const { frontMatter, routerProps, markdown } = this.props;
     console.log(this.props);
+ 
+    let category = routerProps.match.path;
+    if (category + "/" in markdown) {
+      category += "/";
+    }
+    if (category.slice(0, -6) === "/index") {
+      category = category.slice(0, -5);
+    }
+ 
+    let see = [ ];
+    if (frontMatter && frontMatter.see) {
+      see = frontMatter.see;
+    }
+    
     return (
       <article>
         <ArticleHeader 
+          type={'Category'}
           title={frontMatter.title} 
           description={frontMatter.description} 
         />
@@ -23,9 +38,17 @@ class IndexArticle extends Component {
         <Typography variant="body1" component="section">
           {this.props.children}
         </Typography>
-        <SubcategoriesSection category={''} />
-        <ArticlesSection category={''} />
-        <SeeAlsoSection articles={''} />
+        <SubcategoriesSection 
+          category={category} 
+          markdown={markdown} 
+        />
+        <ArticlesSection 
+          category={category} 
+          markdown={markdown}
+        />
+        { see.length > 0 
+          ? <SeeAlsoSection see={see} markdown={markdown} /> 
+          : '' }
       </article>
     );
   }

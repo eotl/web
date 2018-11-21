@@ -7,7 +7,7 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class ArticlesSection extends Component {
   render() {
-    const { frontMatter } = this.props;
+    const { category } = this.props;
     return [
       <Divider/>,
       <section>

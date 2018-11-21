@@ -205,18 +205,19 @@ function generateMarkdownIndex() {
   
   let result = { };
   markdown.map((md) => { result[md] = md });
+
   fs.writeFileSync(paths.markdownIndex, JSON.stringify(result));
 }
 
 function walkMarkdown(path, found) {
   let files = fs.readdirSync(path);
   files = files.map((file) => {
-    if (file[0] == '.') {
+    if (file[0] === ".") {
       return [ ];
     }
     file = path + "/" + file;
     if (fs.lstatSync(file).isDirectory()) {
-      return [ path + "/", walkMarkdown(file) ];
+      return [ file + "/", walkMarkdown(file) ];
     } else {
       return file;
     }

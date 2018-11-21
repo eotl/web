@@ -24,24 +24,29 @@ class AppRoutes extends Component {
   }
 
   renderMarkdownRoutes(markdown) {
-    return Object.keys(markdown).map((md, index) => { 
-      let Markdown = this.props.markdown[md];
+    return Object.keys(markdown).map((path, index) => { 
+      let Markdown = this.props.markdown[path];
       if (Markdown == null) {
-        if (md.slice(-6) === "/index") {
+        if (path.slice(-6) === "/index") {
           Markdown = IndexArticle;
         } else {
+          // TODO 404 
           Markdown = 'div';
         }
       }
-      // if (path.slice(-1) === "/") {
-      // }
+      if (path.slice(-1) === "/") {
+        path = path.slice(0, -1);
+      }
       return (
         <Route exact
           key={index}
-          path={md}
+          path={path}
           render={(routerProps) => (
             <MuiThemeProvider theme={wiki}>
-              <Markdown routerProps={routerProps} />
+              <Markdown 
+                routerProps={routerProps} 
+                markdown={this.props.markdown}
+              />
             </MuiThemeProvider>
           )} 
         /> 

@@ -7,7 +7,7 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class SeeAlsoSection extends Component {
   render() {
-    const { frontMatter } = this.props;
+    const { see } = this.props;
     return [
       <Divider/>,
       <section>

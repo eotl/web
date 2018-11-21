@@ -10,7 +10,7 @@ class ArticleHeader extends Component {
     return (
       <header>
         <Typography variant="h1">
-          Category: {title}
+          {title}
         </Typography>
         <Typography variant="subtitle2">
           {description}

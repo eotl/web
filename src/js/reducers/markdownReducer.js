@@ -6,7 +6,7 @@ const markdownReducer = (state={}, action) => {
       Object.keys(markdownIndex).forEach((path) => {
         if (path !== "/" && path.slice(-1) === "/") {
           state = { ...state };
-          state[path.slice(0, -1)] = null;
+          state[path] = null;
         }
       });
       break;
@@ -15,7 +15,7 @@ const markdownReducer = (state={}, action) => {
       state = { ...state }
       state[path] = page;
       if (path.slice(-6) === "/index") {
-        state[path.slice(0, -6)] = page;
+        state[path.slice(0, -5)] = page;
       }
       break;
     default:
