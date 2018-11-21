@@ -14,12 +14,10 @@ class SubcategoriesSection extends Component {
       return path.match(regex);
     });
     subcategories = subcategories.map((path) => {
-      return {
-        path: path,
-        markdown: markdown[path]
-      }
+      return markdown[path];
     })
-    console.log(markdown['/wiki/index']);
+    subcategories = subcategories.sort((a,b) => a.path > b.path);
+    console.log(subcategories);
   }
 
   render() {

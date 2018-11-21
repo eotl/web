@@ -25,7 +25,7 @@ class AppRoutes extends Component {
 
   renderMarkdownRoutes(markdown) {
     return Object.keys(markdown).map((path, index) => { 
-      let Markdown = this.props.markdown[path];
+      let Markdown = this.props.markdown[path].component;
       if (Markdown == null) {
         if (path.slice(-6) === "/index") {
           Markdown = IndexArticle;

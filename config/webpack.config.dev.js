@@ -19,7 +19,8 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const RemarkWikiLinkPlugin = require('remark-wiki-link');
-const WikiConfig = require('./wikiconfig');
+const WikiConfig = require('./wikiConfig');
+const MarkdownTemplate = require('./markdownTemplate');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -337,7 +338,8 @@ module.exports = {
                   ],
                   prependJs: [
                     "import { Link } from 'react-router-dom'"
-                  ]
+                  ],
+                  template: MarkdownTemplate
                 }
               }
             ]

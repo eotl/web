@@ -10,7 +10,8 @@ function* loadMarkdown(action) {
           type: "MARKDOWN_LOADED", 
           payload: { 
             path: path,
-            page: page.default 
+            component: page.default,
+            frontMatter: page.frontMatter,
           } 
         });
       } catch (e) {
