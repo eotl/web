@@ -12,7 +12,7 @@ class ArticleGrid extends Component {
     const { articles, markdown, classes } = this.props;
     return (
      <div className={classes.articleGrid.root}>
-        <Grid container spacing={24}>
+        <Grid container spacing={24} classes={{ container: classes.articleGrid.paper, item: classes.articleGrid.paper  }}>
           { articles.map((article, index) => {
             let title = getTitle(markdown, article.path);
             let description = getDescription(markdown, article.path);
@@ -23,7 +23,7 @@ class ArticleGrid extends Component {
                     {title}
                   </Typography>
                   { description 
-                    ? <Typography variant="caption" className={classes.articleGrid.grid}>
+                    ? <Typography variant="caption">
                         {description}
                       </Typography>
                     : ''

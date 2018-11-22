@@ -11,7 +11,6 @@ class SeeAlsoSection extends Component {
   render() {
     const { see, markdown } = this.props;
     const articles = getArticlesByName(markdown, see);
-    console.log('asdf', articles);
     if (articles.length > 0) {
       return [
         <Divider key={0} />,

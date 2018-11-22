@@ -36,7 +36,6 @@ export function getArticlesByName(markdown, names) {
 
 export function getTitle(markdown, path) {
   let title = null;
-  console.log('fart', path);
   if (markdown[path].frontMatter) {
     title = markdown[path].frontMatter.title;
   }
@@ -78,6 +77,7 @@ export function getDescription(markdown, path) {
 export default {
   getSubcategories,
   getArticles,
+  getArticlesByName,
   getTitle,
   getDescription
 };

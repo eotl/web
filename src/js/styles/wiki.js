@@ -9,18 +9,20 @@ const styles = theme => ({
   }, 
   articleGrid: {
     root: {
-      flexGrow: 1,
+      borderWidth: '20px',
+      borderColor: 'red',
+//      flexGrow: 1,
     },
     paper: {
+      borderWidth: 20,
+      borderColor: 'red',
       padding: theme.spacing.unit * 2,
       color: theme.palette.text.secondary,
-      minHeight: '100px'
-    },
-    grid: {
+      minHeight: '100px',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-    }
+    },
  }
 });
 
