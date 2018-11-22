@@ -1,5 +1,15 @@
 const DESCRIPTION_CHILDREN = 8;
 
+export function mungeCategory(markdown, category) {
+  if (category + "/" in markdown) {
+    category += "/";
+  }
+  if (category.slice(0, -6) === "/index") {
+    category = category.slice(0, -5);
+  }
+  return category;
+}
+
 export function getSubcategories(markdown, category) {
   category = category.replace(/\//g, "\\/");
   return Object.keys(markdown)
@@ -75,6 +85,7 @@ export function getDescription(markdown, path) {
 }
 
 export default {
+  mungeCategory,
   getSubcategories,
   getArticles,
   getArticlesByName,

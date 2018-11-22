@@ -13,7 +13,8 @@ const styles = theme => ({
     marginBottom: 10,
   },
   articleGridPaper: {
-    minHeight: 42,
+    minHeight: 52,
+    padding: 5,
   },
   articleGridCopy: {
     whiteSpace: 'nowrap',

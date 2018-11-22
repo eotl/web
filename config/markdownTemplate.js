@@ -33,7 +33,7 @@ module.exports = data => {
     export default class ${data.name} extends React.PureComponent {
       render() {
         const props = this.props;
-        return ${body};
+        return ${body ? body : null};
       }
     };
     export { frontMatter };

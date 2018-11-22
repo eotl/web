@@ -19,6 +19,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const RemarkWikiLinkPlugin = require('remark-wiki-link');
+const RemarkExternalLinkPlugin = require('remark-external-links');
 const WikiConfig = require('./wikiConfig');
 const MarkdownTemplate = require('./markdownTemplate');
 
@@ -334,7 +335,8 @@ module.exports = {
                       permalinks: WikiConfig.getPermalinks(),
                       pageResolver: WikiConfig.resolvePage,
                       hrefTemplate: WikiConfig.hrefTemplate
-                    } ]
+                    } ],
+                    RemarkExternalLinkPlugin,
                   ],
                   prependJs: [
                     "import { Link } from 'react-router-dom'"
