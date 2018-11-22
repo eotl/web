@@ -25,9 +25,9 @@ class AppRoutes extends Component {
 
   renderMarkdownRoutes(markdown) {
     return Object.keys(markdown).map((path, index) => { 
-      let Markdown = this.props.markdown[path].component;
+      let Markdown = markdown[path].component;
       if (Markdown == null) {
-        if (path.slice(-6) === "/index") {
+        if (path.slice(-6) === "/index" || path.slice(-1) === "/") {
           Markdown = IndexArticle;
         } else {
           // TODO 404 
@@ -44,7 +44,7 @@ class AppRoutes extends Component {
           render={(routerProps) => (
             <MuiThemeProvider theme={wiki}>
               <Markdown 
-                routerProps={routerProps} 
+                path={routerProps.match.path} 
                 markdown={this.props.markdown}
               />
             </MuiThemeProvider>

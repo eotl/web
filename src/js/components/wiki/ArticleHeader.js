@@ -12,9 +12,12 @@ class ArticleHeader extends Component {
         <Typography variant="h1">
           {title}
         </Typography>
-        <Typography variant="subtitle2">
-          {description}
-        </Typography>
+        { description 
+          ? <Typography variant="subtitle2">
+              {description}
+            </Typography>
+          : ''
+        }
       </header>
     );
   }

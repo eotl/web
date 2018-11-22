@@ -6,15 +6,16 @@ import ArticleHeader from './ArticleHeader';
 import SubcategoriesSection from './SubcategoriesSection';
 import ArticlesSection from './ArticlesSection';
 import SeeAlsoSection from './SeeAlsoSection';
+import { getTitle, getDescription } from '../../helpers/wikiHelper';
 import styles from '../../styles/wiki';
 
 @withStyles(styles, { withTheme: true })
 class IndexArticle extends Component {
   render() {
-    const { frontMatter, routerProps, markdown } = this.props;
+    const { frontMatter, path, markdown } = this.props;
     console.log(this.props);
  
-    let category = routerProps.match.path;
+    let category = path;
     if (category + "/" in markdown) {
       category += "/";
     }
@@ -27,12 +28,14 @@ class IndexArticle extends Component {
       see = frontMatter.see;
     }
     
+    let title = getTitle(markdown, category);
+    let description = getDescription(markdown, category);
+
     return (
       <article>
         <ArticleHeader 
-          type={'Category'}
-          title={frontMatter.title} 
-          description={frontMatter.description} 
+          title={title} 
+          description={description} 
         />
         <Divider/>
         <Typography variant="body1" component="section">

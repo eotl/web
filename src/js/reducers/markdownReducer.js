@@ -5,17 +5,22 @@ const markdownReducer = (state={}, action) => {
     case "LOAD_MARKDOWN":
       state = { ...state };
       Object.keys(markdownIndex).forEach((path) => {
-        if (path !== "/" && path.slice(-1) === "/") {
-          state[path] = { ...state[path], path };
+        if (path !== "/") {
+          let isCategory = false;
+          if (path.slice(-1) === "/" || path.slice(-6) === "/index") {
+            isCategory = true;
+          }
+          state[path] = { ...state[path], path, isCategory };
         }
       });
       break;
     case "MARKDOWN_LOADED":
-      const { path, component, frontMatter } = action.payload;
+      const { path } = action.payload;
       state = { ...state }
-      state[path] = { path, component, frontMatter };
+      state[path] = { ...state[path], ...action.payload };
       if (path.slice(-6) === "/index") {
-        state[path.slice(0, -5)] = { ...state[path], path: path.slice(0, -5) };
+        const categoryPath = path.slice(0, -5);
+        state[categoryPath] = { ...state[path], path: categoryPath };
       }
       break;
     default:
