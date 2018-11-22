@@ -9,13 +9,15 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class SeeAlsoSection extends Component {
   render() {
-    const { see, markdown } = this.props;
+    const { see, markdown, classes } = this.props;
     const articles = getArticlesByName(markdown, see);
     if (articles.length > 0) {
       return [
-        <Divider key={0} />,
+        <Divider key={0} className={classes.sectionDivider}/>,
         <section key={1} >
-          <Typography variant="h2">See also</Typography>
+          <Typography variant="h2" className={classes.sectionHeader}>
+            See also
+          </Typography>
           <ArticleGrid articles={articles} markdown={markdown} />
         </section>
       ];

@@ -7,23 +7,30 @@ const styles = theme => ({
     h5: theme.typography.h5,
     h6: theme.typography.h6,
   }, 
-  articleGrid: {
-    root: {
-      borderWidth: '20px',
-      borderColor: 'red',
-//      flexGrow: 1,
-    },
-    paper: {
-      borderWidth: 20,
-      borderColor: 'red',
-      padding: theme.spacing.unit * 2,
-      color: theme.palette.text.secondary,
-      minHeight: '100px',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    },
- }
+  articleGridRoot: {
+    flexGrow: 1,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  articleGridPaper: {
+    minHeight: 42,
+  },
+  articleGridCopy: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+  articleGridLink: {
+    textDecoration: 'none',
+  },
+  sectionDivider: {
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  sectionHeader: {
+    marginTop: 10,
+    marginBottom: 10,
+  }
 });
 
 export default styles;

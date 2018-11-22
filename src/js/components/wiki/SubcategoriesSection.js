@@ -9,13 +9,15 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class SubcategoriesSection extends Component {
   render() {
-    const { category, markdown } = this.props;
+    const { category, markdown, classes } = this.props;
     const subcategories = getSubcategories(markdown, category);
     if (subcategories.length > 0) {
       return [
-        <Divider key={0} />,
+        <Divider key={0} className={classes.sectionDivider}/>,
         <section key={1} >
-          <Typography variant="h2">Subcategories</Typography>
+          <Typography variant="h2" className={classes.sectionHeader}>
+            Subcategories
+          </Typography>
           <ArticleGrid articles={subcategories} markdown={markdown} />
         </section>
       ];

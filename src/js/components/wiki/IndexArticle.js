@@ -12,8 +12,7 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class IndexArticle extends Component {
   render() {
-    const { frontMatter, path, markdown } = this.props;
-    console.log(this.props);
+    const { frontMatter, path, markdown, classes } = this.props;
  
     let category = path;
     if (category + "/" in markdown) {
@@ -37,7 +36,7 @@ class IndexArticle extends Component {
           title={title} 
           description={description} 
         />
-        <Divider/>
+        <Divider className={classes.sectionDivider}/>
         <Typography variant="body1" component="section">
           {this.props.children}
         </Typography>
