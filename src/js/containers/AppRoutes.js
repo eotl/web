@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { MuiThemeProvider } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import Home from '../components/Home';
 import NotFound from '../components/NotFound';
+import WikiLayout from '../components/wiki/WikiLayout';
 import IndexArticle from '../components/wiki/IndexArticle';
+import { toggleWikiDrawer } from '../actions/appActions';
 import { loadMarkdown } from '../actions/markdownActions';
-import { wiki } from '../styles/themes';
 
 @withRouter
 @connect((store) => {
   return {
-    markdown: store.markdown
+    markdown: store.markdown,
+    wikiDrawerOpen: store.app.wikiDrawerOpen
   }
 }, {
-  loadMarkdown
+  loadMarkdown,
+  toggleWikiDrawer
 })
 class AppRoutes extends Component {
   constructor(props) {
@@ -37,20 +39,40 @@ class AppRoutes extends Component {
       if (path.slice(-1) === "/") {
         path = path.slice(0, -1);
       }
-      return (
-        <Route exact
-          key={index}
-          path={path}
-          render={(routerProps) => (
-            <MuiThemeProvider theme={wiki}>
+      if (path.slice(0, 4) === "/wiki") {
+        return (
+          <Route exact
+            key={index}
+            path={path}
+            render={(routerProps) => (
+              <WikiLayout 
+                path={routerProps.match.path} 
+                markdown={this.props.markdown}
+                toggleWikiDrawer={this.props.toggleWikiDrawer}
+                wikiDrawerOpen={this.props.wikiDrawerOpen}
+                >
+                <Markdown 
+                  path={routerProps.match.path} 
+                  markdown={this.props.markdown}
+                />
+              </WikiLayout>
+            )} 
+          /> 
+        ); 
+      } else {
+        return (
+          <Route exact
+            key={index}
+            path={path}
+            render={(routerProps) => (
               <Markdown 
                 path={routerProps.match.path} 
                 markdown={this.props.markdown}
               />
-            </MuiThemeProvider>
-          )} 
-        /> 
-      ); 
+            )} 
+          /> 
+        ); 
+      }
     });
   }
 

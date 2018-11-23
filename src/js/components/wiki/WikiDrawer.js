@@ -10,26 +10,14 @@ import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { withStyles } from '@material-ui/core/styles';
-import HomeIcon from '@material-ui/icons/Home';
-import ComputerIcon from '@material-ui/icons/Computer';
-import InfoIcon from '@material-ui/icons/Info';
-import HelpIcon from '@material-ui/icons/Help';
-import PeopleIcon from '@material-ui/icons/People';
-import ArchiveIcon from '@material-ui/icons/Archive';
-import styles from '../styles/layout';
+import styles from '../../styles/layout';
 
 @withStyles(styles, { withTheme: true })
-class LeftDrawer extends Component {
+class AppDrawer extends Component {
   render() {
     const { theme, classes, open, toggle} = this.props;
 
     const menuItems = [
-      [ '/', "Home", <HomeIcon/> ],
-      [ '/play/', "Play", <ComputerIcon/> ],
-      [ '/news/', "News", <InfoIcon/> ],
-      [ '/wiki/', "Wiki", <HelpIcon/> ],
-      [ '/community/', "Community", <PeopleIcon/> ],
-      [ '/archive/', "Archive", <ArchiveIcon/> ]
     ].map((item, index) => 
       <Link key={index} to={item[0]} className={classes.menuLink}>
         <MenuItem className={classes.menuItem}>
@@ -44,7 +32,7 @@ class LeftDrawer extends Component {
     return (
       <Drawer 
         open={open} 
-        anchor="left"
+        anchor="right"
         variant="persistent"
         className={classes.drawer}
         classes={{
@@ -65,4 +53,4 @@ class LeftDrawer extends Component {
   }
 }
 
-export default LeftDrawer;
+export default AppDrawer;

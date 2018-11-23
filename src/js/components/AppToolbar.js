@@ -12,14 +12,14 @@ import styles from '../styles/layout';
 @withStyles(styles, { withTheme: true })
 class AppToolbar extends Component {
   render() {
-    const { classes, leftDrawerOpen, toggleLeftDrawer } = this.props;
+    const { classes, appDrawerOpen, toggleAppDrawer } = this.props;
     return (
-      <Toolbar disableGutters={leftDrawerOpen}>
+      <Toolbar disableGutters={appDrawerOpen}>
         <IconButton 
-          onClick={toggleLeftDrawer} 
+          onClick={toggleAppDrawer} 
           color="inherit" 
           aria-label="Open drawer"
-          className={classNames(classes.menuButton, leftDrawerOpen && classes.hide)}
+          className={classNames(classes.menuButton, appDrawerOpen && classes.hide)}
         >
           <MenuIcon />
         </IconButton>

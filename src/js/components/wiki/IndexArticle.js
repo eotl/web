@@ -23,7 +23,7 @@ class IndexArticle extends Component {
     }
      
     return (
-      <article>
+      <div>
         <ArticleHeader 
           title={title} 
           description={description} 
@@ -43,7 +43,7 @@ class IndexArticle extends Component {
           category={category} 
           markdown={markdown}
         />
-      </article>
+      </div>
     );
   }
 }

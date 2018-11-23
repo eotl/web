@@ -34,8 +34,10 @@ export function getArticles(markdown, category) {
 export function getArticlesByName(markdown, names) {
   return names
     .map(name => {
-      name = name.replace(/\s+/g, '_').toLowerCase();
-      name = name.replace(/\//g, "\\/");
+      name = name
+        .replace(/\s+/g, '_')
+        .toLowerCase()
+        .replace(/\//g, "\\/");
       return Object.keys(markdown).filter(path => {
         return path.match("/" + name + "/?$");
       });

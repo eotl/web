@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleLeftDrawer } from '../actions/appActions';
-import Layout from '../components/Layout';
+import { toggleAppDrawer } from '../actions/appActions';
+import AppLayout from '../components/AppLayout';
 
 @connect((store) => {
   return {
-    leftDrawerOpen: store.app.leftDrawerOpen
+    appDrawerOpen: store.app.appDrawerOpen
   }
 }, {
-  toggleLeftDrawer
+  toggleAppDrawer
 })
 class App extends Component {
   render() {
     return (
       <Router basename={process.env.PUBLIC_URL}>
-        <Layout
-          toggleLeftDrawer={this.props.toggleLeftDrawer}
-          leftDrawerOpen={this.props.leftDrawerOpen}
+        <AppLayout
+          toggleAppDrawer={this.props.toggleAppDrawer}
+          appDrawerOpen={this.props.appDrawerOpen}
         />
       </Router>
     );

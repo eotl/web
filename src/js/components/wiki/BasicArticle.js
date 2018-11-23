@@ -6,7 +6,7 @@ import ArticleHeader from './ArticleHeader';
 import styles from '../../styles/wiki';
 
 @withStyles(styles, { withTheme: true })
-class DefaultArticle extends Component {
+class BasicArticle extends Component {
   render() {
     const { frontMatter } = this.props;
 
@@ -25,4 +25,4 @@ class DefaultArticle extends Component {
   }
 }
 
-export default DefaultArticle;
+export default BasicArticle;
