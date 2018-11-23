@@ -6,7 +6,7 @@ import AppToolbar from './AppToolbar';
 import AppDrawer from './AppDrawer';
 import AppRoutes from '../containers/AppRoutes';
 import classNames from 'classnames';
-import styles from '../styles/layout';
+import styles from '../styles/appLayout';
 import { defaultTheme } from '../styles/themes';
 
 @withStyles(styles, { withTheme: true })

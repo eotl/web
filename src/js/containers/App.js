@@ -5,7 +5,6 @@ import { toggleAppDrawer } from '../actions/appActions';
 import AppLayout from '../components/AppLayout';
 
 @connect((store) => {
-    console.log('qwer', store);
   return {
     appDrawerOpen: store.app.appDrawerOpen
   }

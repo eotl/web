@@ -7,6 +7,18 @@ const styles = theme => ({
     h5: theme.typography.h5,
     h6: theme.typography.h6,
   }, 
+  headerWrapper: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between'
+  },
+  articleHeader: {
+    flex: 1,
+    order: 1
+  },
+  headerIcon: {
+    order: 2
+  },
   articleGridRoot: {
     flexGrow: 1,
     marginTop: 10,
@@ -31,7 +43,10 @@ const styles = theme => ({
   sectionHeader: {
     marginTop: 10,
     marginBottom: 10,
-  }
+  },
+  hide: {
+    display: 'none',
+  },
 });
 
 export default styles;

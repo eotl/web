@@ -11,7 +11,6 @@ import { loadMarkdown } from '../actions/markdownActions';
 
 @withRouter
 @connect((store) => {
-    console.log('asdf', store);
   return {
     markdown: store.markdown,
     wikiDrawerOpen: store.app.wikiDrawerOpen
@@ -27,7 +26,6 @@ class AppRoutes extends Component {
   }
 
   renderMarkdownRoutes(markdown) {
-    console.log('woo', this.props);
     return Object.keys(markdown).map((path, index) => { 
       let Markdown = markdown[path].component;
       if (Markdown == null) {
@@ -56,6 +54,8 @@ class AppRoutes extends Component {
                 <Markdown 
                   path={routerProps.match.path} 
                   markdown={this.props.markdown}
+                  toggleWikiDrawer={this.props.toggleWikiDrawer}
+                  wikiDrawerOpen={this.props.wikiDrawerOpen}
                 />
               </WikiLayout>
             )} 

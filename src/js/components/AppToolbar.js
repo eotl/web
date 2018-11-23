@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import styles from '../styles/layout';
+import styles from '../styles/appLayout';
 
 @withStyles(styles, { withTheme: true })
 class AppToolbar extends Component {

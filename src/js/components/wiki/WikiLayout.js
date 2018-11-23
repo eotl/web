@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import WikiDrawer from './WikiDrawer';
 import classNames from 'classnames';
-import styles from '../../styles/layout';
+import styles from '../../styles/wikiLayout';
 import { wiki } from '../../styles/themes';
 
 @withStyles(styles, { withTheme: true })
@@ -15,10 +15,6 @@ class WikiLayout extends Component {
       <div className={classes.root}>
         <MuiThemeProvider theme={wiki}>
           <CssBaseline />
-          <WikiDrawer 
-            open={wikiDrawerOpen} 
-            toggle={toggleWikiDrawer}
-          />
           <article
             className={classNames(classes.content, {
               [ classes.contentShift ] : wikiDrawerOpen
@@ -26,6 +22,10 @@ class WikiLayout extends Component {
           >
             {this.props.children}
           </article>
+          <WikiDrawer 
+            open={wikiDrawerOpen} 
+            toggle={toggleWikiDrawer}
+          />
         </MuiThemeProvider>
       </div>
     );

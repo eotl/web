@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { withStyles } from '@material-ui/core/styles';
-import styles from '../../styles/layout';
+import styles from '../../styles/wikiLayout';
 
 @withStyles(styles, { withTheme: true })
 class WikiDrawer extends Component {
@@ -40,9 +40,10 @@ class WikiDrawer extends Component {
           paper: classes.drawerPaper
         }}
       >
-        <div className={classes.drawerHeader}>
+        <div className={classes.drawerHeader}/>
+        <div className={classes.drawerSubHeader}>
           <IconButton onClick={toggle}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
         <Divider />
