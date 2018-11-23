@@ -1,7 +1,7 @@
 
 const appReducer = (state={
   appDrawerOpen: false,
-  wikiDrawerOpen: true
+  wikiDrawerOpen: true,
 }, action) => {
   switch (action.type) {
     case "TOGGLE_APP_DRAWER":

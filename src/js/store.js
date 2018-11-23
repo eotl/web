@@ -14,10 +14,7 @@ const reducers = combineReducers({
 const sagaMiddleware = createSagaMiddleware();
 const middleware = applyMiddleware(sagaMiddleware);
 
-const store = createStore(reducers, {
-  app: {},
-  markdown: {}
-}, middleware);
+const store = createStore(reducers, undefined, middleware);
 
 sagaMiddleware.run(markdownSaga);
 

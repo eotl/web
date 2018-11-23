@@ -13,11 +13,12 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from '../../styles/layout';
 
 @withStyles(styles, { withTheme: true })
-class AppDrawer extends Component {
+class WikiDrawer extends Component {
   render() {
     const { theme, classes, open, toggle} = this.props;
 
     const menuItems = [
+     ["/asdf", "asdf", null]
     ].map((item, index) => 
       <Link key={index} to={item[0]} className={classes.menuLink}>
         <MenuItem className={classes.menuItem}>
@@ -53,4 +54,4 @@ class AppDrawer extends Component {
   }
 }
 
-export default AppDrawer;
+export default WikiDrawer;

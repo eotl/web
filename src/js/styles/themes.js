@@ -14,7 +14,7 @@ const terminal = createMuiTheme({
   palette: {
     type: 'dark',
     background: {
-      paper: '#000'
+      paper: 'black'
     }
   },
   typography: {
@@ -29,8 +29,8 @@ const terminal = createMuiTheme({
 
 const wiki = createMuiTheme({
   palette: {
-    type: 'dark',
-    primary: purple,
+    type: 'light',
+    primary: deepPurple,
     secondary: deepPurple
   },
   typography: {

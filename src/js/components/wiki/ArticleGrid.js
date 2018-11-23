@@ -11,7 +11,6 @@ import styles from '../../styles/wiki';
 class ArticleGrid extends Component {
   render() {
     const { articles, markdown, classes } = this.props;
-    console.log(classes);
     return (
      <div className={classes.articleGrid}>
         <Grid container spacing={24} >
