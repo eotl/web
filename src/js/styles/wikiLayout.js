@@ -1,10 +1,8 @@
-import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const drawerWidth = 180;
 
 const styles = theme => {
   let toolbarMixin = { ...theme.mixins.toolbar };
-  console.log('tm', toolbarMixin);
   return {
     root: {
       display: 'flex',
@@ -55,6 +53,9 @@ const styles = theme => {
       }),
       marginRight: 0,
     },
+    menuList: {
+      paddingLeft: 15,
+    },
     menuItem: {
       '&:focus': {
         backgroundColor: theme.palette.primary.main,
@@ -62,6 +63,9 @@ const styles = theme => {
           color: theme.palette.common.white,
         },
       },
+    },
+    menuItemSelected: {
+      fontWeight: 'bold'
     },
     menuLink: {
       textDecoration: 'none'

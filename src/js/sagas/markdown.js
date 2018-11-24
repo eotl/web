@@ -1,24 +1,22 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, all, takeEvery } from 'redux-saga/effects';
 import markdownIndex from '../../markdown.json';
 
 function* loadMarkdown(action) {
+  let imports = [ ];
   for (let path in markdownIndex) {
     if (path !== "" && path !== "/" && path.slice(-1) !== "/") {
-      try {
-        const page = yield import('../../md' + path + '.md');
-        yield put({ 
-          type: "MARKDOWN_LOADED", 
-          payload: { 
-            path: path,
-            component: page.default,
-            frontMatter: page.frontMatter,
-          } 
-        });
-      } catch (e) {
-        console.log("Error loading markdown: " + path, e);
-      }
+      imports = imports.push(import('../../md' + path + '.md'));
     }
   }
+  try {
+    const markdown = yield all(imports);
+    yield put({ 
+      type: "MARKDOWN_LOADED", 
+      payload: { markdown } 
+    });
+  } catch (e) {
+    console.log("Error loading markdown", e);
+  }  
 }
 
 function* markdownSaga() {

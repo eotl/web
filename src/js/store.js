@@ -10,9 +10,9 @@ const reducers = combineReducers({
   markdown: markdownReducer
 })
 
-//const loggerMiddleware = createLogger();
+const loggerMiddleware = createLogger();
 const sagaMiddleware = createSagaMiddleware();
-const middleware = applyMiddleware(sagaMiddleware);
+const middleware = applyMiddleware(loggerMiddleware, sagaMiddleware);
 
 const store = createStore(reducers, undefined, middleware);
 

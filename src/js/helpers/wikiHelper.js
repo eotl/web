@@ -1,5 +1,19 @@
 const DESCRIPTION_CHILDREN = 8;
 
+export function escapePath(path) {
+  return path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+export function resolvePath(markdown, path) {
+  if (path in markdown) {
+    return path;
+  }
+  if (path + '/' in markdown) {
+    return path + '/';
+  } 
+  return path;
+}
+
 export function mungeCategory(markdown, category) {
   if (category + "/" in markdown) {
     category += "/";
@@ -11,7 +25,7 @@ export function mungeCategory(markdown, category) {
 }
 
 export function getSubcategories(markdown, category) {
-  category = category.replace(/\//g, "\\/");
+  category = escapePath(category);
   return Object.keys(markdown)
     .filter((path) => {
       return path.match("^" + category + "[^/]+\\/$");
@@ -21,7 +35,7 @@ export function getSubcategories(markdown, category) {
 }
 
 export function getArticles(markdown, category) {
-  category = category.replace(/\//g, "\\/");
+  category = escapePath(category);
   return Object.keys(markdown)
     .filter((path) => {
       return (path.slice(-6) !== "/index") 
@@ -29,6 +43,10 @@ export function getArticles(markdown, category) {
     })
     .map((path) => markdown[path])
     .sort((a,b) => a.path > b.path);
+}
+
+export function getChildren(markdown, category) {
+  return getSubcategories(markdown, category).concat(getArticles(markdown, category));
 }
 
 export function getArticlesByName(markdown, names) {
@@ -87,9 +105,12 @@ export function getDescription(markdown, path) {
 }
 
 export default {
+  escapePath,
+  resolvePath,
   mungeCategory,
   getSubcategories,
   getArticles,
+  getChildren, 
   getArticlesByName,
   getTitle,
   getDescription

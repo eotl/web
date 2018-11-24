@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
 const defaultTheme = createMuiTheme({
@@ -56,8 +55,23 @@ const wiki = createMuiTheme({
   },
 });
 
+const wikiMenu = createMuiTheme({
+  palette: {
+    type: 'light',
+    primary: deepPurple,
+    secondary: deepPurple
+  },
+  typography: {
+    htmlFontSize: '12px',
+    subheading: {
+      fontWeight: 'inherit'
+    }
+  },
+});
+
 export {
   defaultTheme,
   terminal,
-  wiki
+  wiki,
+  wikiMenu
 };

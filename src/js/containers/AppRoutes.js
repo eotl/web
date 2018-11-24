@@ -32,14 +32,13 @@ class AppRoutes extends Component {
         if (path.slice(-6) === "/index" || path.slice(-1) === "/") {
           Markdown = IndexArticle;
         } else {
-          // TODO 404 
           Markdown = NotFound;
         }
       }
       if (path.slice(-1) === "/") {
         path = path.slice(0, -1);
       }
-      if (path.slice(0, 5) === "/wiki") {
+      if (path.match(/^\/wiki[/$]?/)) {
         return (
           <Route exact
             key={index}
