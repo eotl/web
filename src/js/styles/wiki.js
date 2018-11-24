@@ -44,6 +44,12 @@ const styles = theme => ({
     marginTop: 10,
     marginBottom: 10,
   },
+  textSection: {
+    whiteSpace: 'pre-wrap',
+  },
+  createIcon: {
+    marginLeft: 15,
+  },
   hide: {
     display: 'none',
   },

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from '../components/Home';
 import NotFound from '../components/NotFound';
+import WikiNotFound from '../components/wiki/WikiNotFound';
 import WikiLayout from '../components/wiki/WikiLayout';
 import IndexArticle from '../components/wiki/IndexArticle';
 import { toggleWikiDrawer } from '../actions/appActions';
@@ -28,17 +29,17 @@ class AppRoutes extends Component {
   renderMarkdownRoutes(markdown) {
     return Object.keys(markdown).map((path, index) => { 
       let Markdown = markdown[path].component;
-      if (Markdown == null) {
-        if (path.slice(-6) === "/index" || path.slice(-1) === "/") {
-          Markdown = IndexArticle;
-        } else {
-          Markdown = NotFound;
-        }
-      }
       if (path.slice(-1) === "/") {
         path = path.slice(0, -1);
       }
       if (path.match(/^\/wiki[/$]?/)) {
+        if (Markdown == null) {
+          if (path.slice(-6) === "/index" || path.slice(-1) === "/") {
+            Markdown = IndexArticle;
+          } else {
+            Markdown = WikiNotFound;
+          }
+        }
         return (
           <Route exact
             key={index}

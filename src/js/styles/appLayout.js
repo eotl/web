@@ -1,7 +1,7 @@
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import BackgroundImage from '../../img/parchment.jpg';
 
-const drawerWidth = 180;
+const drawerWidth = 200;
 
 const styles = theme => {
   let toolbarMixin = { ...theme.mixins.toolbar };
@@ -10,7 +10,7 @@ const styles = theme => {
     root: {
       display: 'flex',
       width: '100%',
-      height: '100%',
+      minHeight: '100%',
     },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {

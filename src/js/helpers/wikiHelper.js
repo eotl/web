@@ -4,6 +4,10 @@ export function escapePath(path) {
   return path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+export function parentPath(path) {
+  return path.replace(/\/[^/]*$/, '');
+}
+
 export function resolvePath(markdown, path) {
   if (path in markdown) {
     return path;
@@ -66,6 +70,7 @@ export function getArticlesByName(markdown, names) {
 
 export function getTitle(markdown, path) {
   let title = null;
+  path = resolvePath(markdown, path);
   if (markdown[path].frontMatter) {
     title = markdown[path].frontMatter.title;
   }
@@ -78,6 +83,7 @@ export function getTitle(markdown, path) {
 
 export function getDescription(markdown, path) {
   let description = null;
+  path = resolvePath(markdown, path);
   if (markdown[path].frontMatter) {
     description = markdown[path].frontMatter.description;
   }
