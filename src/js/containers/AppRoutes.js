@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from '../components/Home';
+import Play from '../components/Play';
 import NotFound from '../components/NotFound';
 import WikiNotFound from '../components/wiki/WikiNotFound';
 import WikiLayout from '../components/wiki/WikiLayout';
@@ -79,6 +80,10 @@ class AppRoutes extends Component {
     return (
       <Switch>
         {this.renderMarkdownRoutes(this.props.markdown)}
+        <Route exact
+          path="/play/"
+          render={(routerProps) => <Play/>}
+        />
         <Route exact
           path="/"
           render={(routerProps) => <Home/>}

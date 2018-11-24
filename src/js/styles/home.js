@@ -4,7 +4,6 @@ const styles = theme => ({
   },
   banner: {
     display: 'inline-block',
-    lineHeight: '1em',
     color: 'white',
     textAlign: 'left'
   },

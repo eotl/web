@@ -33,7 +33,7 @@ class Home extends Component {
               </div>
               <div className={classes.bannerCaption}>
                 <Typography variant="subtitle2" component="div">
-                  Since 1989 <span style={{color: 'white'}}>|</span> <Link to="/connect/" className={classes.bannerLink}>telnet://eotl.org:2010/</Link>
+                  Since 1989 <span style={{color: 'white'}}>|</span> <Link to="/play/" className={classes.bannerLink}>telnet://eotl.org:2010/</Link>
                 </Typography>
               </div>
             </div>

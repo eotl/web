@@ -24,6 +24,7 @@ const terminal = createMuiTheme({
        'monospace'
       ].join(','),
       align: 'left',
+      lineHeight: '1.2em',
     },
     subtitle2: {
       fontFamily: [
