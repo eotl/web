@@ -6,7 +6,7 @@ import ArticleHeader from './ArticleHeader';
 import SubcategoriesSection from './SubcategoriesSection';
 import ArticlesSection from './ArticlesSection';
 import SeeAlsoSection from './SeeAlsoSection';
-import { mungeCategory, getTitle, getDescription } from '../../helpers/wikiHelper';
+import { mungeCategory } from '../../helpers/wikiHelper';
 import styles from '../../styles/wiki';
 
 @withStyles(styles, { withTheme: true })
@@ -15,8 +15,6 @@ class IndexArticle extends Component {
     const { frontMatter, path, toggleWikiDrawer, wikiDrawerOpen, markdown, classes } = this.props;
 
     let category = mungeCategory(markdown, path);
-    let title = getTitle(markdown, category);
-    let description = getDescription(markdown, category);
     let see = [ ];
     if (frontMatter && frontMatter.see) {
       see = frontMatter.see;
@@ -25,8 +23,8 @@ class IndexArticle extends Component {
     return (
       <div>
         <ArticleHeader 
-          title={title} 
-          description={description} 
+          path={category} 
+          markdown={markdown} 
           toggle={toggleWikiDrawer}
           open={wikiDrawerOpen}
         />

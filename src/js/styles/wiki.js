@@ -33,7 +33,7 @@ const styles = theme => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
-  articleGridLink: {
+  plainLink: {
     textDecoration: 'none',
   },
   sectionDivider: {
@@ -43,6 +43,19 @@ const styles = theme => ({
   sectionHeader: {
     marginTop: 10,
     marginBottom: 10,
+  },
+  breadcrumbs: {
+    display: 'flex',
+    listStyle: 'none',
+    padding: 0
+  },
+  breadcrumb: {
+  },
+  textSection: {
+    whiteSpace: 'pre-wrap',
+  },
+  createIcon: {
+    marginLeft: 15,
   },
   hide: {
     display: 'none',

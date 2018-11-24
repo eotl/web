@@ -1,7 +1,11 @@
-const DESCRIPTION_CHILDREN = 8;
+const DESCRIPTION_CHILDREN = 12;
 
 export function escapePath(path) {
   return path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+export function parentPath(path) {
+  return path.replace(/\/[^/]*$/, '');
 }
 
 export function resolvePath(markdown, path) {
@@ -22,6 +26,23 @@ export function mungeCategory(markdown, category) {
     category = category.slice(0, -5);
   }
   return category;
+}
+
+export function getBreadcrumbs(markdown, path) {
+  path = resolvePath(markdown, path);
+  let breadcrumbs = parentPath(path).split('/').slice(1);
+  for (let i = 0; i < breadcrumbs.length; i++) {
+    let parent = '/';
+    if (i !== 0) {
+      parent = breadcrumbs[i-1];
+    }
+    breadcrumbs[i] = parent + breadcrumbs[i] + '/';
+  }
+  if (markdown[path].isCategory) {
+    return breadcrumbs.slice(0, -1);
+  } else {
+    return breadcrumbs;
+  }
 }
 
 export function getSubcategories(markdown, category) {
@@ -66,6 +87,7 @@ export function getArticlesByName(markdown, names) {
 
 export function getTitle(markdown, path) {
   let title = null;
+  path = resolvePath(markdown, path);
   if (markdown[path].frontMatter) {
     title = markdown[path].frontMatter.title;
   }
@@ -78,6 +100,7 @@ export function getTitle(markdown, path) {
 
 export function getDescription(markdown, path) {
   let description = null;
+  path = resolvePath(markdown, path);
   if (markdown[path].frontMatter) {
     description = markdown[path].frontMatter.description;
   }
@@ -108,6 +131,7 @@ export default {
   escapePath,
   resolvePath,
   mungeCategory,
+  getBreadcrumbs,
   getSubcategories,
   getArticles,
   getChildren, 
