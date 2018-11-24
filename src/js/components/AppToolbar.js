@@ -7,19 +7,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import styles from '../styles/layout';
+import styles from '../styles/appLayout';
 
 @withStyles(styles, { withTheme: true })
 class AppToolbar extends Component {
   render() {
-    const { classes, leftDrawerOpen, toggleLeftDrawer } = this.props;
+    const { classes, appDrawerOpen, toggleAppDrawer } = this.props;
     return (
-      <Toolbar disableGutters={leftDrawerOpen}>
+      <Toolbar disableGutters={appDrawerOpen}>
         <IconButton 
-          onClick={toggleLeftDrawer} 
+          onClick={toggleAppDrawer} 
           color="inherit" 
           aria-label="Open drawer"
-          className={classNames(classes.menuButton, leftDrawerOpen && classes.hide)}
+          className={classNames(classes.menuButton, appDrawerOpen && classes.hide)}
         >
           <MenuIcon />
         </IconButton>

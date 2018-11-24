@@ -1,11 +1,18 @@
 
-
 const appReducer = (state={
-  leftDrawerOpen: false
+  appDrawerOpen: false,
+  wikiDrawerOpen: true,
 }, action) => {
   switch (action.type) {
-    case "TOGGLE_LEFT_DRAWER":
-      state = { ...state, leftDrawerOpen: !state.leftDrawerOpen };
+    case "TOGGLE_APP_DRAWER":
+      state = { ...state, appDrawerOpen: !state.appDrawerOpen };
+      break;
+    default:
+      break;
+  }
+  switch (action.type) {
+    case "TOGGLE_WIKI_DRAWER":
+      state = { ...state, wikiDrawerOpen: !state.wikiDrawerOpen };
       break;
     default:
       break;

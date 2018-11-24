@@ -12,7 +12,7 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class IndexArticle extends Component {
   render() {
-    const { frontMatter, path, markdown, classes } = this.props;
+    const { frontMatter, path, toggleWikiDrawer, wikiDrawerOpen, markdown, classes } = this.props;
 
     let category = mungeCategory(markdown, path);
     let title = getTitle(markdown, category);
@@ -23,10 +23,12 @@ class IndexArticle extends Component {
     }
      
     return (
-      <article>
+      <div>
         <ArticleHeader 
           title={title} 
           description={description} 
+          toggle={toggleWikiDrawer}
+          open={wikiDrawerOpen}
         />
         <Divider className={classes.sectionDivider}/>
         <Typography variant="body1" component="section">
@@ -43,7 +45,7 @@ class IndexArticle extends Component {
           category={category} 
           markdown={markdown}
         />
-      </article>
+      </div>
     );
   }
 }

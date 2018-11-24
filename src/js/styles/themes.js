@@ -1,11 +1,10 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
 const defaultTheme = createMuiTheme({
   palette: {
-    type: 'dark',
-    primary: purple,
+    type: 'light',
+    primary: deepPurple,
     secondary: deepPurple
   },
 });
@@ -14,7 +13,7 @@ const terminal = createMuiTheme({
   palette: {
     type: 'dark',
     background: {
-      paper: '#000'
+      paper: 'black'
     }
   },
   typography: {
@@ -29,8 +28,8 @@ const terminal = createMuiTheme({
 
 const wiki = createMuiTheme({
   palette: {
-    type: 'dark',
-    primary: purple,
+    type: 'light',
+    primary: deepPurple,
     secondary: deepPurple
   },
   typography: {
@@ -56,8 +55,23 @@ const wiki = createMuiTheme({
   },
 });
 
+const wikiMenu = createMuiTheme({
+  palette: {
+    type: 'light',
+    primary: deepPurple,
+    secondary: deepPurple
+  },
+  typography: {
+    htmlFontSize: '12px',
+    subheading: {
+      fontWeight: 'inherit'
+    }
+  },
+});
+
 export {
   defaultTheme,
   terminal,
-  wiki
+  wiki,
+  wikiMenu
 };

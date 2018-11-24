@@ -3,16 +3,16 @@ import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import AppToolbar from './AppToolbar';
-import LeftDrawer from './LeftDrawer';
+import AppDrawer from './AppDrawer';
 import AppRoutes from '../containers/AppRoutes';
 import classNames from 'classnames';
-import styles from '../styles/layout';
+import styles from '../styles/appLayout';
 import { defaultTheme } from '../styles/themes';
 
 @withStyles(styles, { withTheme: true })
-class Layout extends Component {
+class AppLayout extends Component {
   render() {
-    const { classes, toggleLeftDrawer, leftDrawerOpen } = this.props;
+    const { classes, toggleAppDrawer, appDrawerOpen } = this.props;
 
     return (
       <div className={classes.root}>
@@ -22,21 +22,21 @@ class Layout extends Component {
             position="fixed"
             title={'test'}
             className={classNames(classes.appBar, { 
-              [ classes.appBarShift ]: leftDrawerOpen
+              [ classes.appBarShift ]: appDrawerOpen
             })}
           >
             <AppToolbar 
-              leftDrawerOpen={leftDrawerOpen} 
-              toggleLeftDrawer={toggleLeftDrawer} 
+              appDrawerOpen={appDrawerOpen} 
+              toggleAppDrawer={toggleAppDrawer} 
             />
           </AppBar>
-          <LeftDrawer 
-            open={leftDrawerOpen} 
-            toggle={toggleLeftDrawer}
+          <AppDrawer 
+            open={appDrawerOpen} 
+            toggle={toggleAppDrawer}
           />
           <main
             className={classNames(classes.content, {
-              [ classes.contentShift ] : leftDrawerOpen
+              [ classes.contentShift ] : appDrawerOpen
             })}
           >
             <div className={classes.drawerHeader} />
@@ -50,4 +50,4 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default AppLayout;

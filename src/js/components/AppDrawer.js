@@ -16,10 +16,10 @@ import InfoIcon from '@material-ui/icons/Info';
 import HelpIcon from '@material-ui/icons/Help';
 import PeopleIcon from '@material-ui/icons/People';
 import ArchiveIcon from '@material-ui/icons/Archive';
-import styles from '../styles/layout';
+import styles from '../styles/appLayout';
 
 @withStyles(styles, { withTheme: true })
-class LeftDrawer extends Component {
+class AppDrawer extends Component {
   render() {
     const { theme, classes, open, toggle} = this.props;
 
@@ -65,4 +65,4 @@ class LeftDrawer extends Component {
   }
 }
 
-export default LeftDrawer;
+export default AppDrawer;
