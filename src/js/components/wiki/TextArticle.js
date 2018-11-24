@@ -4,10 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
-import CreateIcon from '@material-ui/icons/Create';
+import CreateIcon from '@material-ui/icons/CreateTwoTone';
 import { withStyles } from '@material-ui/core/styles';
 import ArticleHeader from './ArticleHeader';
-import { getTitle, getDescription } from '../../helpers/wikiHelper';
 import styles from '../../styles/wiki';
 
 @withStyles(styles, { withTheme: true })
@@ -15,14 +14,11 @@ class TextArticle extends Component {
   render() {
     const { path, toggleWikiDrawer, wikiDrawerOpen, markdown, classes } = this.props;
 
-    const title = getTitle(markdown, path);
-    const description = getDescription(markdown, path);
-
     return (
       <div>
         <ArticleHeader 
-          title={title} 
-          description={description} 
+          path={path} 
+          markdown={markdown} 
           toggle={toggleWikiDrawer}
           open={wikiDrawerOpen}
         />

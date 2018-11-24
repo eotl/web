@@ -1,4 +1,4 @@
-const DESCRIPTION_CHILDREN = 8;
+const DESCRIPTION_CHILDREN = 12;
 
 export function escapePath(path) {
   return path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -26,6 +26,23 @@ export function mungeCategory(markdown, category) {
     category = category.slice(0, -5);
   }
   return category;
+}
+
+export function getBreadcrumbs(markdown, path) {
+  path = resolvePath(markdown, path);
+  let breadcrumbs = parentPath(path).split('/').slice(1);
+  for (let i = 0; i < breadcrumbs.length; i++) {
+    let parent = '/';
+    if (i !== 0) {
+      parent = breadcrumbs[i-1];
+    }
+    breadcrumbs[i] = parent + breadcrumbs[i] + '/';
+  }
+  if (markdown[path].isCategory) {
+    return breadcrumbs.slice(0, -1);
+  } else {
+    return breadcrumbs;
+  }
 }
 
 export function getSubcategories(markdown, category) {
@@ -114,6 +131,7 @@ export default {
   escapePath,
   resolvePath,
   mungeCategory,
+  getBreadcrumbs,
   getSubcategories,
   getArticles,
   getChildren, 

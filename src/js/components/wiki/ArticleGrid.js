@@ -19,7 +19,7 @@ class ArticleGrid extends Component {
             let description = getDescription(markdown, article.path);
             return (
               <Grid key={index} item xs={12} sm={6} md={6} lg={3} xl={3}>
-                  <Link to={article.path} className={classes.articleGridLink}>
+                  <Link to={article.path} className={classes.plainLink}>
                   <Paper className={classes.articleGridPaper}>
                     <Typography variant="button" className={classes.articleGridCopy}>
                       {title}

@@ -29,9 +29,6 @@ class AppRoutes extends Component {
   renderMarkdownRoutes(markdown) {
     return Object.keys(markdown).map((path, index) => { 
       let Markdown = markdown[path].component;
-      if (path.slice(-1) === "/") {
-        path = path.slice(0, -1);
-      }
       if (path.match(/^\/wiki[/$]?/)) {
         if (Markdown == null) {
           if (path.slice(-6) === "/index" || path.slice(-1) === "/") {
