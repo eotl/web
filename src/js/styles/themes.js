@@ -17,12 +17,22 @@ const terminal = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: [
-     'Consolas',
-     'monaco',
-     'monospace'
-    ].join(','),
-    align: 'left',
+    body1: {
+      fontFamily: [
+       'Consolas',
+       'monaco',
+       'monospace'
+      ].join(','),
+      align: 'left',
+    },
+    subtitle2: {
+      fontFamily: [
+       'Consolas',
+       'monaco',
+       'monospace'
+      ].join(','),
+      fontSize: '1.4em'
+    }
   },
 });
 
