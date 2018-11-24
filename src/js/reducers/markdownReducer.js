@@ -1,10 +1,10 @@
-import markdown from '../../markdown.json';
+import markdownIndex from '../../markdown.json';
 
 const markdownReducer = (state={}, action) => {
   switch (action.type) {
     case "LOAD_MARKDOWN":
       state = { ...state };
-      Object.keys(markdown).forEach((path) => {
+      Object.keys(markdownIndex).forEach((path) => {
         if (path !== "/") {
           let isCategory = false;
           if (path.slice(-1) === "/" || path.slice(-6) === "/index") {
@@ -16,13 +16,17 @@ const markdownReducer = (state={}, action) => {
       break;
     case "MARKDOWN_LOADED":
       state = { ...state };
-      action.payload.forEach(md => {
-        state[md.path] = { ...state[md.path], ...md };
-        if (md.path.slice(-6) === "/index") {
-          const categoryPath = md.path.slice(0, -5);
-          state[categoryPath] = { ...state[md.path], path: categoryPath };
+      const { markdown, paths } = action.payload;
+      for (let i = 0; i < markdown.length; i++) {
+        state[paths[i]] = { ...state[paths[i]], 
+          component: markdown[i].default,
+          frontMatter: markdown[i].frontMatter
+        };
+        if (paths[i].slice(-6) === "/index") {
+          const categoryPath = paths[i].slice(0, -5);
+          state[categoryPath] = { ...state[paths[i]], path: categoryPath };
         }
-      });
+      }
       break;
     default:
       break;

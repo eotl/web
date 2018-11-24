@@ -1,4 +1,5 @@
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import BackgroundImage from '../../img/parchment.jpg';
 
 const drawerWidth = 180;
 
@@ -9,6 +10,7 @@ const styles = theme => {
     root: {
       display: 'flex',
       width: '100%',
+      height: '100%',
     },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {
@@ -101,6 +103,7 @@ const styles = theme => {
         duration: theme.transitions.duration.leavingScreen,
       }),
       marginLeft: -drawerWidth,
+      backgroundImage: `url(${BackgroundImage})`,
     },
     contentShift: {
       transition: theme.transitions.create('margin', {

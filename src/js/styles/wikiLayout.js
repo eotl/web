@@ -1,5 +1,5 @@
 
-const drawerWidth = 180;
+const drawerWidth = 220;
 
 const styles = theme => {
   let toolbarMixin = { ...theme.mixins.toolbar };
