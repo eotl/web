@@ -47,9 +47,11 @@ const wiki = createMuiTheme({
     htmlFontSize: '12px',
     h1: {
       fontSize: '2.0em',
+      fontWeight: defaultTheme.typography.h1.fontWeight + 200,
     },
     h2: {
       fontSize: '1.8em',
+      fontWeight: defaultTheme.typography.h2.fontWeight + 100,
     },
     h3: {
       fontSize: '1.6em',
