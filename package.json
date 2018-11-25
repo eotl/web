@@ -30,6 +30,7 @@
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
+    "github-slugger": "^1.2.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
@@ -87,6 +88,7 @@
     "rehype": "^6.0.0",
     "remark": "^10.0.0",
     "remark-external-links": "^3.1.0",
+    "remark-slug": "^5.1.1",
     "remark-wiki-link": "bobalu113/remark-wiki-link"
   },
   "jest": {

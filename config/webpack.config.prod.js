@@ -24,6 +24,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const RemarkWikiLinkPlugin = require('remark-wiki-link');
 const RemarkExternalLinkPlugin = require('remark-external-links');
+const RemarkSlugPlugin = require('remark-slug');
 const WikiConfig = require('./wikiConfig');
 const MarkdownTemplate = require('./markdownTemplate');
 
@@ -427,6 +428,7 @@ module.exports = {
                       hrefTemplate: WikiConfig.hrefTemplate
                     } ],
                     RemarkExternalLinkPlugin,
+                    RemarkSlugPlugin,
                   ],
                   prependJs: [
                     "import { Link } from 'react-router-dom'"

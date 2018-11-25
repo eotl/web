@@ -19,6 +19,20 @@ module.exports = data => {
     body = `<Wrapper {...props} frontMatter={frontMatter}>${body}</Wrapper>`;
   }
 
+  data.frontMatter.path = undefined;
+  if (data.jsx && data.jsx["_source"]) {
+    let path = data.jsx["_source"].fileName;
+    if (path) {
+      // TODO get this from system
+      let systemPath = '/vagrant/eotl-web/config/markdownTemplate.js';
+      systemPath = mypath.replace(/\/config\/markdownTemplate\.js$/, '');
+      const mdPrefix = '/src/md';
+      path = path.replace("^" + systemPath + mdPrefix, "");
+      path = path.replace(/\.md$/, "");
+      data.frontMatter.path = path;
+    }
+  }
+
   const frontMatterComment = data.rawFrontMatter
     ? `/*---\n${data.rawFrontMatter}\n---*/`
     : '';
@@ -30,13 +44,15 @@ module.exports = data => {
     const frontMatter = ${stringifyObject(
       _.omit(data.frontMatter, ['prependJs', 'wrapper'])
     )};
+    const props = { };
+    const jsx = ${data.jsx ? data.jsx : null};
     export default class ${data.name} extends React.PureComponent {
       render() {
         const props = this.props;
         return ${body ? body : null};
       }
     };
-    export { frontMatter };
+    export { frontMatter, jsx };
   `;
 
   return js;

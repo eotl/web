@@ -18,9 +18,12 @@ const markdownReducer = (state={}, action) => {
       state = { ...state };
       const { markdown, paths } = action.payload;
       for (let i = 0; i < markdown.length; i++) {
+        if (paths[i] === '/wiki/index') {
+        }
         state[paths[i]] = { ...state[paths[i]], 
           component: markdown[i].default,
-          frontMatter: markdown[i].frontMatter
+          frontMatter: markdown[i].frontMatter,
+          jsx: markdown[i].jsx,
         };
         if (paths[i].slice(-6) === "/index") {
           const categoryPath = paths[i].slice(0, -5);

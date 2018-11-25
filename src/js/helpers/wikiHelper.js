@@ -1,3 +1,5 @@
+import * as GithubSlugger from 'github-slugger';
+
 const DESCRIPTION_CHILDREN = 12;
 
 export function escapePath(path) {
@@ -127,6 +129,89 @@ export function getDescription(markdown, path) {
   return description;
 }
 
+export function getHeaders(markdown, path, depth=0) {
+  const levels = {
+    '_root': 0,
+    'h1': 1,
+    'h2': 2, 
+    'h3': 3,
+    'h4': 4,
+    'h5': 5,
+    'h6': 6,
+  };
+
+  const findHeaders = (jsx) => { 
+    if (jsx.props.children instanceof Array) {
+      for (let i = 0; i < jsx.props.children.length; i++) {
+        if (typeof jsx.props.children[i] !== 'string') {
+          if (jsx.props.children[i].type in levels) {
+            return jsx.props.children;
+          } else {
+            const headers = findHeaders(jsx.props.children[i]);
+            if (headers.length > 0) {
+              return headers;
+            }
+          }
+        }
+      }
+    }
+    return [];
+  };
+  const headers = findHeaders(markdown[path].jsx);
+
+  let stack = [ ];
+  const slugger = new GithubSlugger()
+  for (let i = 0; i < headers.length; i++) {
+    const header = headers[i];
+    if (!(header.type in levels)) {
+      continue;
+    }
+    if (typeof header.props.children !== 'string') {
+      continue;
+    } 
+    const level = levels[header.type];
+    if (stack.length === 0) {
+      stack.push({
+        type: '_root',
+        children: [ ],
+        parent: undefined
+      })
+    }
+    const top = stack.slice(-1)[0];
+    const topLevel = levels[top.type];
+    const info = {
+        type: header.type,
+        text: header.props.children,
+        slug: slugger.slug(header.props.children),
+        children: [ ],            
+    }
+    if (level > topLevel) {
+      if (depth === 0 || stack.length <= depth) {
+        top.children.push({ ...info,  
+          parent: top
+        });
+        stack.push(top.children.slice(-1)[0]);
+      }
+    } else if (level === topLevel) {
+      top.parent.children.push({ ...info,
+        parent: top.parent
+      });
+      stack.splice(-1, 1, top.parent.children.slice(-1)[0]);
+    } else if (level < topLevel) {
+      for (let j = stack.length - 1; j >= 0; j--) {
+        if (level === levels[stack[j].type]) {
+          stack[j].parent.children.push({ ...info,
+            parent: stack[j].parent
+          });
+          stack.splice(j, stack.length, stack[j].parent.children.slice(-1)[0]);
+        } 
+      }
+    }
+  }
+
+  return stack[0].children;
+}
+
 export default {
   escapePath,
   resolvePath,
@@ -137,5 +222,6 @@ export default {
   getChildren, 
   getArticlesByName,
   getTitle,
-  getDescription
+  getDescription,
+  getHeaders,
 };
