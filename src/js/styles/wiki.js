@@ -49,7 +49,46 @@ const styles = theme => ({
     listStyle: 'none',
     padding: 0
   },
-  breadcrumb: {
+  tableOfContents: {
+    '@global': {
+      'ol': {
+        listStyleType: 'none',
+        counterReset: 'item',
+        margin: 0,
+        padding: 0,
+      },
+      'ol > li': {
+        display: 'table',
+        counterIncrement: 'item',
+        lineHeight: '1.4em',
+      },
+      'ol > li:before': {
+        content: 'counters(item, ".") ". "',
+        display: 'table-cell',
+        paddingRight: '0.6em',
+      },
+      'li ol > li': {
+        margin: 0,
+      },
+      'li ol > li:before': {
+        content: 'counters(item, ".") " "',
+      }
+    }
+  },
+  tocPaper: {
+    padding: 10,
+    display: 'inline-block'
+  },
+  tocHeaderOpen: {
+    textAlign: 'center',
+  },
+  tocHide: {
+    background: 'none!important',
+    color: 'inherit',
+    border: 'none',
+    padding: '0!important',
+    font: 'inherit',
+    cursor: 'pointer',
   },
   textSection: {
     whiteSpace: 'pre-wrap',

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,7 +17,7 @@ class TableOfContents extends Component {
   }
 
   toggleContents() {
-    this.setState(...this.state, { open: !this.state.open });
+    this.setState({ ...this.state, open: !this.state.open });
   }
 
   renderContents(contents,) {
@@ -25,7 +26,7 @@ class TableOfContents extends Component {
       return '';
     }
     return (
-      <Typography variant="body2" component="ol">
+      <Typography variant="body1" component="ol">
         { contents.map((item, index) => {
           return (
             <li key={index}>
@@ -41,14 +42,24 @@ class TableOfContents extends Component {
   }
 
   render() {
-    const { path, markdown, depth } = this.props;
+    const { path, markdown, depth, classes } = this.props;
 
     const headers = getHeaders(markdown, path, depth);
     if (headers.length > 0) {
       return (
-        <Paper>
-          <div>Contents [<button onClick={this.toggleContents}>hide</button>]</div>
-          {this.renderContents(headers)}
+        <Paper component='div' className={classes.tocPaper}>
+          <Typography variant="body2" component="div" className={classNames(this.state.open && classes.tocHeaderOpen)}>
+            Contents&nbsp;[
+              <button 
+                className={classes.tocHide} 
+                onClick={this.toggleContents}>
+                {this.state.open ? 'hide' : 'show'}
+              </button>]
+          </Typography>
+          <div className={classNames(classes.tableOfContents, 
+                          !this.state.open && classes.hide)}>
+            {this.renderContents(headers)}
+          </div>
         </Paper>
       );
     } else {
