@@ -54,6 +54,42 @@ const styles = theme => {
         display: 'block',
       },
     },
+    suggestionsContainer: {
+      position: 'relative',
+    },
+    suggestionsContainerOpen: {
+      position: 'absolute',
+      zIndex: 1,
+      marginTop: theme.spacing.unit,
+      left: 0,
+      right: 0,
+    },
+    suggestion: {
+      display: 'block',
+    },
+    suggestionsList: {
+      margin: 0,
+      padding: 0,
+      listStyleType: 'none',
+    },
+    searchInputRoot: {
+      color: 'inherit',
+      width: '100%',
+    },
+    searchInputInput: {
+      paddingTop: theme.spacing.unit,
+      paddingRight: theme.spacing.unit,
+      paddingBottom: theme.spacing.unit,
+      paddingLeft: theme.spacing.unit * 10,
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        width: 120,
+        '&:focus': {
+          width: 200,
+        },
+      }
+    },
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
@@ -76,25 +112,7 @@ const styles = theme => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    inputRoot: {
-      color: 'inherit',
-      width: '100%',
-    },
-    inputInput: {
-      paddingTop: theme.spacing.unit,
-      paddingRight: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit * 10,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: 120,
-        '&:focus': {
-          width: 200,
-        },
-      }
-    },
+    },    
     content: {
       flexGrow: 1,
       padding: theme.spacing.unit * 3,

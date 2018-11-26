@@ -1,12 +1,17 @@
 import * as GithubSlugger from 'github-slugger';
 
-const DESCRIPTION_CHILDREN = 12;
+const DESCRIPTION_CHILDREN = 8;
 
 export function escapePath(path) {
   return path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 export function parentPath(path) {
+  if (path.slice(-6) === "/index") {
+    path = path.slice(0, -6);
+  } else if (path.slice(-1) === "/") {
+    path = path.slice(0, -1);
+  }
   return path.replace(/\/[^/]*$/, '');
 }
 
@@ -40,11 +45,7 @@ export function getBreadcrumbs(markdown, path) {
     }
     breadcrumbs[i] = parent + breadcrumbs[i] + '/';
   }
-  if (markdown[path].isCategory) {
-    return breadcrumbs.slice(0, -1);
-  } else {
-    return breadcrumbs;
-  }
+  return breadcrumbs;
 }
 
 export function getSubcategories(markdown, category) {
@@ -88,22 +89,25 @@ export function getArticlesByName(markdown, names) {
 }
 
 export function getTitle(markdown, path) {
-  let title = null;
+  let title = undefined;
   path = resolvePath(markdown, path);
-  if (markdown[path].frontMatter) {
+  if (path in markdown && markdown[path].frontMatter) {
     title = markdown[path].frontMatter.title;
   }
   if (!title) {
-    title = path.match(/([^/]+)\/?$/)[1].replace(/_+/g, ' ');
-    title = title[0].toUpperCase() + title.slice(1);
+    let match = path.match(/([^/]+)\/?$/);
+    if (match) {
+      title = match[1].replace(/_+/g, ' ');
+      title = title[0].toUpperCase() + title.slice(1);
+    }
   }
   return title;
 }
 
 export function getDescription(markdown, path) {
-  let description = null;
+  let description = undefined;
   path = resolvePath(markdown, path);
-  if (markdown[path].frontMatter) {
+  if (path in markdown && markdown[path].frontMatter) {
     description = markdown[path].frontMatter.description;
   }
   if (!description && markdown[path].isCategory) {

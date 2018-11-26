@@ -10,7 +10,7 @@ const styles = theme => ({
   headerWrapper: {
     display: 'flex',
     alignItems: 'flex-start',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   articleHeader: {
     flex: 1,
