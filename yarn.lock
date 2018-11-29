@@ -9753,7 +9753,7 @@ remark-stringify@^6.0.0:
 
 remark-wiki-link@bobalu113/remark-wiki-link:
   version "0.0.1"
-  resolved "https://codeload.github.com/bobalu113/remark-wiki-link/tar.gz/e61b7466bdd7cd4e2c556977037bf4564d9a525d"
+  resolved "https://codeload.github.com/bobalu113/remark-wiki-link/tar.gz/5e4a38ae7be686b33a346fac63b8a9ee1732c590"
   dependencies:
     babel-polyfill "^6.23.0"
     unist-util-map "^1.0.3"

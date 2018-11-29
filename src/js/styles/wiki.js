@@ -6,6 +6,22 @@ const styles = theme => ({
     h4: theme.typography.h4,
     h5: theme.typography.h5,
     h6: theme.typography.h6,
+    table: {
+      border: 'solid',
+      borderWidth: 2,
+      padding: 10,
+      borderCollapse: 'collapse',
+    },
+    th: {
+      border: 'solid',
+      borderWidth: '0px 2px 0px 2px',
+      padding: '0px 10px 0px 10px',
+    },
+    td: {
+      border: 'solid',
+      borderWidth: '0px 2px 0px 2px',
+      padding: '0px 10px 0px 10px',
+    },
   }, 
   headerWrapper: {
     display: 'flex',
