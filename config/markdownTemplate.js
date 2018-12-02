@@ -4,12 +4,36 @@ const _ = require('lodash');
 const stringifyObject = require('stringify-object');
 
 module.exports = data => {
-  let prepended = '';
-  if (data.prependJs !== undefined) {
-    data.prependJs.forEach(m => {
-      prepended += `${m}\n`;
+  const frontMatter = data.frontMatter;
+  let prepended = "import { Link } from 'react-router-dom';\n";
+  // if (data.prependJs !== undefined) {
+  //   data.prependJs.forEach(m => {
+  //     prepended += `${m}\n`;
+  //   });
+  // }
+  if (frontMatter.wikiComponents !== undefined) {
+    frontMatter.wikiComponents.forEach(m => {
+      prepended += `import ${m} from 'WikiComponents/${m}';\n`;
     });
   }
+  if (frontMatter.muiComponents !== undefined) {
+    frontMatter.muiComponents.forEach(m => {
+      prepended += `import ${m} from '@material-ui/core/${m}';\n`;
+    });
+  }
+  if (frontMatter.muiIcons !== undefined) {
+    frontMatter.muiIcons.forEach(m => {
+      prepended += `import ${m} from '@material-ui/icons/${m}';\n`;
+    });
+  }
+
+
+  if (frontMatter.wikiWrapper !== undefined) {
+    data.wrapper = 'WikiComponents/' + frontMatter.wikiWrapper;
+  } else {
+    data.wrapper = undefined;
+  }
+
   if (data.wrapper) {
     prepended += `import Wrapper from '${data.wrapper}';\n`;
   }
@@ -24,8 +48,8 @@ module.exports = data => {
     let path = data.jsx["_source"].fileName;
     if (path) {
       // TODO get this from system
-      let systemPath = '/vagrant/eotl-web/config/markdownTemplate.js';
-      systemPath = mypath.replace(/\/config\/markdownTemplate\.js$/, '');
+      let systemPath = __dirname;
+      systemPath = mypath.replace(/\/config\/?$/, '');
       const mdPrefix = '/src/md';
       path = path.replace("^" + systemPath + mdPrefix, "");
       path = path.replace(/\.md$/, "");

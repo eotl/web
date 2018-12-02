@@ -155,6 +155,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      WikiComponents: path.resolve(__dirname, '../src/js/components/wiki/'),
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -339,9 +340,6 @@ module.exports = {
                     } ],
                     RemarkExternalLinkPlugin,
                     RemarkSlugPlugin,
-                ],
-                  prependJs: [
-                    "import { Link } from 'react-router-dom'"
                   ],
                   template: MarkdownTemplate
                 }
