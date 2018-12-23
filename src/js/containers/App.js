@@ -6,10 +6,10 @@ import AppLayout from '../components/AppLayout';
 
 @connect((store) => {
   return {
-    appDrawerOpen: store.app.appDrawerOpen
+    appDrawerOpen: store.app.appDrawerOpen,
   }
 }, {
-  toggleAppDrawer
+  toggleAppDrawer,
 })
 class App extends Component {
   render() {

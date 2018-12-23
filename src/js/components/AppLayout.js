@@ -12,7 +12,8 @@ import { defaultTheme } from '../styles/themes';
 @withStyles(styles, { withTheme: true })
 class AppLayout extends Component {
   render() {
-    const { classes, toggleAppDrawer, appDrawerOpen } = this.props;
+    const { classes, 
+            toggleAppDrawer, appDrawerOpen } = this.props;
 
     return (
       <div className={classes.root}>
@@ -27,7 +28,7 @@ class AppLayout extends Component {
           >
             <AppToolbar 
               appDrawerOpen={appDrawerOpen} 
-              toggleAppDrawer={toggleAppDrawer} 
+              toggleAppDrawer={toggleAppDrawer}
             />
           </AppBar>
           <AppDrawer 

@@ -5,13 +5,15 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
 import AppSearch from '../containers/AppSearch';
+import SpoilerLevel from '../containers/SpoilerLevel';
 import classNames from 'classnames';
 import styles from '../styles/appLayout';
 
 @withStyles(styles, { withTheme: true })
 class AppToolbar extends Component {
   render() {
-    const { classes, appDrawerOpen, toggleAppDrawer } = this.props;
+    const { classes, 
+            appDrawerOpen, toggleAppDrawer } = this.props;
     return (
       <Toolbar disableGutters={appDrawerOpen}>
         <IconButton 
@@ -27,6 +29,7 @@ class AppToolbar extends Component {
         </Typography>
         <div className={classes.grow} />
         <AppSearch />
+        <SpoilerLevel />
       </Toolbar>
     );
   }

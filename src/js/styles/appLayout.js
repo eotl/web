@@ -1,4 +1,5 @@
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import { SpoilerLevels } from '../helpers/spoilerHelper';
 import BackgroundImage from '../../img/parchment.jpg';
 
 const drawerWidth = 200;
@@ -146,6 +147,27 @@ const styles = theme => {
     },
     primary: {},
     icon: {},
+    lightTooltip: {
+      background: theme.palette.common.white,
+      color: theme.palette.text.primary,
+      boxShadow: theme.shadows[1],
+      fontSize: 11,
+    },
+    noneSpoiler: {
+      color: SpoilerLevels.none.color,
+    },
+    newbieSpoiler: {
+      color: SpoilerLevels.newbie.color,
+    },
+    regularSpoiler: {
+      color: SpoilerLevels.regular.color,
+    },
+    veteranSpoiler: {
+      color: SpoilerLevels.veteran.color,
+    },
+    wizardSpoiler: {
+      color: SpoilerLevels.wizard.color,
+    },
   };
 };
 

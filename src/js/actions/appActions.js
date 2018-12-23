@@ -10,8 +10,11 @@ export function toggleWikiDrawer() {
   }
 };
 
-export function importComponent(path) {
+export function setSpoilerLevel(level) {
   return {
-    type: "IMPORT_COMPONENT"
+    type: "SET_SPOILER_LEVEL",
+    payload: {
+      level
+    }
   }
 }
