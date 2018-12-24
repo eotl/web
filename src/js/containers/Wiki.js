@@ -30,6 +30,7 @@ class Wiki extends Component {
           markdown={markdown}
           wikiDrawerOpen={wikiDrawerOpen}
           toggleWikiDrawer={toggleWikiDrawer}
+          spoilerLevel={spoilerLevel}
         />
       </WikiLayout>
     );

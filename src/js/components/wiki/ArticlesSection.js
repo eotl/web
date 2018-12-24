@@ -4,13 +4,15 @@ import Divider from '@material-ui/core/Divider';
 import ArticleGrid from './ArticleGrid';
 import { withStyles } from '@material-ui/core/styles';
 import { getArticles } from '../../helpers/wikiHelper';
+import { isMarkdownSpoiler } from '../../helpers/spoilerHelper';
 import styles from '../../styles/wiki';
 
 @withStyles(styles, { withTheme: true })
 class ArticlesSection extends Component {
   render() {
-    const { category, markdown, classes } = this.props;
-    const articles = getArticles(markdown, category);
+    const { category, markdown, spoilerLevel, classes } = this.props;
+    const articles = getArticles(markdown, category)
+      .filter(article => !isMarkdownSpoiler(article, spoilerLevel));
     if (articles.length > 0) {
       return [
         <Divider key={0} className={classes.sectionDivider}/>,

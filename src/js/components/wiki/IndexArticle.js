@@ -12,7 +12,8 @@ import styles from '../../styles/wiki';
 @withStyles(styles, { withTheme: true })
 class IndexArticle extends Component {
   render() {
-    const { frontMatter, path, toggleWikiDrawer, wikiDrawerOpen, markdown, classes } = this.props;
+    const { frontMatter, path, markdown, spoilerLevel, 
+            toggleWikiDrawer, wikiDrawerOpen, classes } = this.props;
 
     let category = mungeCategory(markdown, path);
     let see = [ ];
@@ -34,14 +35,18 @@ class IndexArticle extends Component {
         </Typography>
         <SeeAlsoSection 
           see={see} 
-          markdown={markdown} /> 
+          markdown={markdown} 
+          spoilerLevel={spoilerLevel}
+        /> 
         <SubcategoriesSection 
           category={category} 
           markdown={markdown} 
+          spoilerLevel={spoilerLevel}
         />
         <ArticlesSection 
           category={category} 
           markdown={markdown}
+          spoilerLevel={spoilerLevel}
         />
       </div>
     );

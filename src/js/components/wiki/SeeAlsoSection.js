@@ -4,13 +4,15 @@ import Divider from '@material-ui/core/Divider';
 import ArticleGrid from './ArticleGrid';
 import { withStyles } from '@material-ui/core/styles';
 import { getArticlesByName } from '../../helpers/wikiHelper';
+import { isMarkdownSpoiler } from '../../helpers/spoilerHelper';
 import styles from '../../styles/wiki';
 
 @withStyles(styles, { withTheme: true })
 class SeeAlsoSection extends Component {
   render() {
-    const { see, markdown, classes } = this.props;
-    const articles = getArticlesByName(markdown, see);
+    const { see, markdown, spoilerLevel, classes } = this.props;
+    const articles = getArticlesByName(markdown, see)
+      .filter(article => !isMarkdownSpoiler(article, spoilerLevel));
     if (articles.length > 0) {
       return [
         <Divider key={0} className={classes.sectionDivider}/>,
