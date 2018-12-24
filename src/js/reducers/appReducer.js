@@ -1,8 +1,12 @@
+let spoilerLevel = localStorage.getItem('eotl.spoilerLevel');
+if (!spoilerLevel) {
+  spoilerLevel = 'none';
+}
 
 const appReducer = (state={
   appDrawerOpen: false,
   wikiDrawerOpen: true,
-  spoilerLevel: 'none'
+  spoilerLevel: spoilerLevel,
 }, action) => {
   switch (action.type) {
     case "TOGGLE_APP_DRAWER":
@@ -12,6 +16,7 @@ const appReducer = (state={
       state = { ...state, wikiDrawerOpen: !state.wikiDrawerOpen };
       break;
     case "SET_SPOILER_LEVEL":
+      localStorage.setItem('eotl.spoilerLevel', action.payload.level);
       state = { ...state, spoilerLevel: action.payload.level };
       break;
     default:
