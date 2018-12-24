@@ -144,6 +144,34 @@ const styles = theme => ({
   wizardSpoiler: {
     color: SpoilerLevels.wizard.color,
   },
+  nonePlaceholder: {
+    backgroundColor: SpoilerLevels.none.color,
+    color: theme.palette.common.white,
+    padding: '5px',
+  },
+  newbiePlaceholder: {
+    backgroundColor: SpoilerLevels.newbie.color,
+    color: theme.palette.common.white,
+    padding: '5px',
+  },
+  regularPlaceholder: {
+    backgroundColor: SpoilerLevels.regular.color,
+    color: theme.palette.common.white,
+    padding: '5px',
+  },
+  veteranPlaceholder: {
+    backgroundColor: SpoilerLevels.veteran.color,
+    color: theme.palette.common.white,
+    padding: '5px',
+  },
+  wizardPlaceholder: {
+    backgroundColor: SpoilerLevels.wizard.color,
+    color: theme.palette.common.white,
+    padding: '5px',
+  },
+  placeholderIcon: {
+    marginBottom: '-6px',
+  }
 });
 
 export default styles;

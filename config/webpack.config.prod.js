@@ -230,6 +230,7 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
       WikiComponents: path.resolve(__dirname, '../src/js/components/wiki/'),
+      Containers: path.resolve(__dirname, '../src/js/containers/'),
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding

@@ -5,7 +5,8 @@ const stringifyObject = require('stringify-object');
 
 module.exports = data => {
   const frontMatter = data.frontMatter;
-  let prepended = "import { Link } from 'react-router-dom';\n";
+  let prepended = "import { Link } from 'react-router-dom';\n"
+                  + "import Spoiler from 'Containers/Spoiler';\n";
   // if (data.prependJs !== undefined) {
   //   data.prependJs.forEach(m => {
   //     prepended += `${m}\n`;

@@ -41,7 +41,12 @@ export function isMarkdownSpoiler(markdown, spoilerLevel) {
   if (!markdown.frontMatter.spoilerLevel) {
     markdown.frontMatter.spoilerLevel = 'none';
   }
-  const mdLevel = SpoilerLevels[markdown.frontMatter.spoilerLevel].level;
-  const level = SpoilerLevels[spoilerLevel].level;
-  return level < mdLevel;
+  return isSpoiler(markdown.frontMatter.spoilerLevel, spoilerLevel);
+}
+
+export function isSpoiler(level, spoilerLevel) {
+  if (!(level in SpoilerLevels)) {
+    level = 'none';
+  }
+  return SpoilerLevels[spoilerLevel].level < SpoilerLevels[level].level;
 }
