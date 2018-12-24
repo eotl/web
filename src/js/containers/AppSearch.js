@@ -3,20 +3,26 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AppSearchBar from '../components/AppSearchBar';
 import { parentPath, getTitle, getDescription } from '../helpers/wikiHelper';
+import { isMarkdownSpoiler } from '../helpers/spoilerHelper';
 
 @withRouter
 @connect((store) => {
   return {
     markdown: store.markdown,
+    spoilerLevel: store.app.spoilerLevel,
   }
 })
 class AppSearch extends Component {
   render() {
-    const { markdown, history } = this.props;
+    const { markdown, history, spoilerLevel } = this.props;
     
     const suggestions = Object.keys(markdown)
       .filter(path => {
-        return ( path !== '/' && path.slice(-6) !== '/index' );
+        return ( 
+          path !== '/' 
+          && path.slice(-6) !== '/index' 
+          && !isMarkdownSpoiler(markdown[path], spoilerLevel)
+        );
       })
       .map(path => {
         return {

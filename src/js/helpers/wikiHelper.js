@@ -91,7 +91,7 @@ export function getArticlesByName(markdown, names) {
 export function getTitle(markdown, path) {
   let title = undefined;
   path = resolvePath(markdown, path);
-  if (path in markdown && markdown[path].frontMatter) {
+  if (path in markdown) {
     title = markdown[path].frontMatter.title;
   }
   if (!title) {
@@ -107,7 +107,7 @@ export function getTitle(markdown, path) {
 export function getDescription(markdown, path) {
   let description = undefined;
   path = resolvePath(markdown, path);
-  if (path in markdown && markdown[path].frontMatter) {
+  if (path in markdown) {
     description = markdown[path].frontMatter.description;
   }
   if (!description && markdown[path].isCategory) {
@@ -131,6 +131,18 @@ export function getDescription(markdown, path) {
     }
   }
   return description;
+}
+
+export function getSpoilerLevel(markdown, path) {
+  let spoilerLevel = undefined;
+  path = resolvePath(markdown, path);
+  if (path in markdown) {
+    spoilerLevel = markdown[path].frontMatter.spoilerLevel;
+  }
+  if (!spoilerLevel) {
+    spoilerLevel = 'none';
+  }
+  return spoilerLevel;
 }
 
 export function getHeaders(markdown, path, depth=0) {
@@ -227,5 +239,6 @@ export default {
   getArticlesByName,
   getTitle,
   getDescription,
+  getSpoilerLevel,
   getHeaders,
 };

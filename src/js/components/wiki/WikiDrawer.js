@@ -15,6 +15,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { escapePath, resolvePath, mungeCategory, 
          getChildren, getTitle } from '../../helpers/wikiHelper';
+import { isMarkdownSpoiler } from '../../helpers/spoilerHelper';
 import styles from '../../styles/wikiLayout';
 import { wikiMenu } from '../../styles/themes';
 
@@ -45,46 +46,48 @@ class WikiDrawer extends Component {
   }
 
   renderMenuItems(category) {
-    const { markdown, classes } = this.props;
+    const { markdown, classes, spoilerLevel } = this.props;
     const children = getChildren(markdown, category);
     const path = resolvePath(markdown, this.props.path);
 
-    return children.map((child, index) => {
-      if (child.isCategory) {
-        const category = mungeCategory(markdown, child.path);
-        return (
-          <div key={index}>
-            <MenuItem 
-              button 
-              onClick={() => this.toggleMenu(child.path)} 
-              className={classNames(classes.menuItem, 
-                path === category && classes.menuItemSelected
-            )}>
-              <ListItemText primary={getTitle(markdown, child.path)} />
-              {this.state.menu[child.path] ? <ExpandLess /> : <ExpandMore />}
-            </MenuItem>
-            <Collapse in={this.state.menu[child.path]} timeout="auto" unmountOnExit>
-              <MenuList component="ul" className={classes.menuList} disablePadding>
-                {this.renderMenuItems(category)}
-              </MenuList>
-            </Collapse>
-          </div>
-        );
-      } else {
-        return (
-          <Link key={index} to={child.path} className={classes.menuLink}>
-            <MenuItem
-              className={classNames(classes.menuItem, 
-                path === child.path && classes.menuItemSelected
-            )}>
-              <ListItemText 
-                classes={{ primary: classes.primary }} 
-                primary={getTitle(markdown, child.path)} />
-            </MenuItem>
-          </Link>
-        );
-      }
-    });
+    return children
+      .filter(child => !isMarkdownSpoiler(child, spoilerLevel))
+      .map((child, index) => {
+        if (child.isCategory) {
+          const category = mungeCategory(markdown, child.path);
+          return (
+            <div key={index}>
+              <MenuItem 
+                button 
+                onClick={() => this.toggleMenu(child.path)} 
+                className={classNames(classes.menuItem, 
+                  path === category && classes.menuItemSelected
+              )}>
+                <ListItemText primary={getTitle(markdown, child.path)} />
+                {this.state.menu[child.path] ? <ExpandLess /> : <ExpandMore />}
+              </MenuItem>
+              <Collapse in={this.state.menu[child.path]} timeout="auto" unmountOnExit>
+                <MenuList component="ul" className={classes.menuList} disablePadding>
+                  {this.renderMenuItems(category)}
+                </MenuList>
+              </Collapse>
+            </div>
+          );
+        } else {
+          return (
+            <Link key={index} to={child.path} className={classes.menuLink}>
+              <MenuItem
+                className={classNames(classes.menuItem, 
+                  path === child.path && classes.menuItemSelected
+              )}>
+                <ListItemText 
+                  classes={{ primary: classes.primary }} 
+                  primary={getTitle(markdown, child.path)} />
+              </MenuItem>
+            </Link>
+          );
+        }
+      });
   }
 
   render() {

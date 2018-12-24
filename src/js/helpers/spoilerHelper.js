@@ -36,3 +36,12 @@ export function getLevelArray() {
     .map(k => SpoilerLevels[k])
     .sort((a, b) => a.level > b.level);
 }
+
+export function isMarkdownSpoiler(markdown, spoilerLevel) {
+  if (!markdown.frontMatter.spoilerLevel) {
+    markdown.frontMatter.spoilerLevel = 'none';
+  }
+  const mdLevel = SpoilerLevels[markdown.frontMatter.spoilerLevel].level;
+  const level = SpoilerLevels[spoilerLevel].level;
+  return level < mdLevel;
+}

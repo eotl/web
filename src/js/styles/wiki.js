@@ -1,3 +1,5 @@
+import { SpoilerLevels } from '../helpers/spoilerHelper';
+
 const styles = theme => ({
   '@global': {
     h1: theme.typography.h1,
@@ -30,7 +32,7 @@ const styles = theme => ({
   },
   articleHeader: {
     flex: 1,
-    order: 1
+    order: 1,
   },
   headerIcon: {
     order: 2
@@ -114,6 +116,33 @@ const styles = theme => ({
   },
   hide: {
     display: 'none',
+  },
+  headerFlexbox: {
+    display: 'flex',
+  },
+  headerHeader: {
+    flexGrow: 1,
+  },
+  lightTooltip: {
+    background: theme.palette.common.white,
+    color: theme.palette.text.primary,
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+  noneSpoiler: {
+    color: SpoilerLevels.none.color,
+  },
+  newbieSpoiler: {
+    color: SpoilerLevels.newbie.color,
+  },
+  regularSpoiler: {
+    color: SpoilerLevels.regular.color,
+  },
+  veteranSpoiler: {
+    color: SpoilerLevels.veteran.color,
+  },
+  wizardSpoiler: {
+    color: SpoilerLevels.wizard.color,
   },
 });
 

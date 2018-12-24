@@ -10,7 +10,8 @@ const markdownReducer = (state={}, action) => {
           if (path.slice(-1) === "/" || path.slice(-6) === "/index") {
             isCategory = true;
           }
-          state[path] = { ...state[path], path, isCategory };
+          const frontMatter = { };
+          state[path] = { ...state[path], path, isCategory, frontMatter };
         }
       });
       break;

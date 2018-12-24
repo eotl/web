@@ -18,7 +18,7 @@ class WikiBreadcrumbs extends Component {
             let delim = '';
             if (index !== 0) {
               delim = (
-                <li key={'spacer' + 1} className={classes.breadcrumb}>
+                <li key={'spacer' + index} className={classes.breadcrumb}>
                   <ArrowRightIcon/>
                 </li>
               );

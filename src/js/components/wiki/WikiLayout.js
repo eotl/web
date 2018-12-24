@@ -9,7 +9,8 @@ import { wiki } from '../../styles/themes';
 @withStyles(styles, { withTheme: true })
 class WikiLayout extends Component {
   render() {
-    const { path, markdown, classes, toggleWikiDrawer, wikiDrawerOpen } = this.props;
+    const { path, markdown, classes, 
+            spoilerLevel, toggleWikiDrawer, wikiDrawerOpen } = this.props;
 
     return (
       <div className={classes.root}>
@@ -27,6 +28,7 @@ class WikiLayout extends Component {
             toggle={toggleWikiDrawer}
             path={path}
             markdown={markdown}
+            spoilerLevel={spoilerLevel}
           />
         </MuiThemeProvider>
       </div>

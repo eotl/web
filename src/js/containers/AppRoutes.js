@@ -6,20 +6,17 @@ import Home from '../components/Home';
 import Play from '../components/Play';
 import NotFound from '../components/NotFound';
 import WikiNotFound from '../components/wiki/WikiNotFound';
-import WikiLayout from '../components/wiki/WikiLayout';
+import Wiki from '../containers/Wiki';
 import IndexArticle from '../components/wiki/IndexArticle';
-import { toggleWikiDrawer } from '../actions/appActions';
 import { loadMarkdown } from '../actions/markdownActions';
 
 @withRouter
 @connect((store) => {
   return {
-    markdown: store.markdown,
-    wikiDrawerOpen: store.app.wikiDrawerOpen
+    markdown: store.markdown
   }
 }, {
-  loadMarkdown,
-  toggleWikiDrawer
+  loadMarkdown
 })
 class AppRoutes extends Component {
   constructor(props) {
@@ -43,19 +40,7 @@ class AppRoutes extends Component {
             key={index}
             path={path}
             render={(routerProps) => (
-              <WikiLayout 
-                path={routerProps.match.path} 
-                markdown={this.props.markdown}
-                toggleWikiDrawer={this.props.toggleWikiDrawer}
-                wikiDrawerOpen={this.props.wikiDrawerOpen}
-                >
-                <Markdown 
-                  path={routerProps.match.path} 
-                  markdown={this.props.markdown}
-                  toggleWikiDrawer={this.props.toggleWikiDrawer}
-                  wikiDrawerOpen={this.props.wikiDrawerOpen}
-                />
-              </WikiLayout>
+              <Wiki path={routerProps.match.path} WikiWrapper={Markdown} />
             )} 
           /> 
         ); 
