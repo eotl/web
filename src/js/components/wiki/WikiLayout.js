@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import WikiDrawer from './WikiDrawer';
+import Spoiler from '../../containers/Spoiler';
 import classNames from 'classnames';
+import { getSpoilerLevel } from '../../helpers/wikiHelper';
 import styles from '../../styles/wikiLayout';
 import { wiki } from '../../styles/themes';
 
@@ -21,7 +23,9 @@ class WikiLayout extends Component {
               [ classes.contentShift ] : wikiDrawerOpen
             })}
           >
-            {this.props.children}
+            <Spoiler level={getSpoilerLevel(markdown, path)} placeholder >
+              {this.props.children}
+            </Spoiler>
           </article>
           <WikiDrawer 
             open={wikiDrawerOpen} 

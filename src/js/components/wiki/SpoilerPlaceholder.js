@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Typography from '@material-ui/core/Typography';
 import SpoilerIcon from '@material-ui/icons/RemoveRedEye';
 import { withStyles } from '@material-ui/core/styles';
 import { SpoilerLevels } from '../../helpers/spoilerHelper';
@@ -20,7 +21,10 @@ class SpoilerPlaceholder extends Component {
 
     return (
       <span className={classes[level + "Placeholder"]}>
-        <SpoilerIcon className={classes.placeholderIcon}/>&nbsp;{placeholder}&nbsp;
+        <SpoilerIcon className={classes.placeholderIcon}/>
+        <Typography className={classes.placeholder} variant="body1" component="span">
+          {placeholder}
+        </Typography>
       </span>
     );
   }

@@ -171,6 +171,11 @@ const styles = theme => ({
   },
   placeholderIcon: {
     marginBottom: '-6px',
+  },
+  placeholder: {
+    display: 'inline-block',
+    backgroundColor: 'inherit',
+    color: 'inherit',
   }
 });
 
